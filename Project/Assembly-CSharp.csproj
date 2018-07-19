@@ -67,14 +67,16 @@
     <Compile Include="Assets\Scripts\Mechanics\BoxController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoxSideController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoxSideDetails.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\ConnectorController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\RecieverController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\TempBoxGO.cs" />
     <Compile Include="Assets\Scripts\Mechanics\TimeController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>G:/Project/Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/haris/Documents/GitHub/Idle-project/Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>G:/Project/Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/haris/Documents/GitHub/Idle-project/Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>F:/Programs/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -251,7 +253,7 @@
       <HintPath>F:/Programs/Unity/Editor/Data/Managed/Unity.Locator.dll</HintPath>
     </Reference>
     <Reference Include="Facebook.Unity.Settings">
-      <HintPath>G:/Project/Project/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+      <HintPath>C:/Users/haris/Documents/GitHub/Idle-project/Project/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>F:/Programs/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -892,7 +892,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainBox: {fileID: 114782470640727778}
+  rotateAmount: 0
+  boxSidePresent: 0
+  side: 
   IncomeHeld: 0
+  IncomeRate: 0
+  SideNumber: 5
 --- !u!114 &114211023669625528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -905,7 +910,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainBox: {fileID: 114782470640727778}
+  rotateAmount: 0
+  boxSidePresent: 0
+  side: 
   IncomeHeld: 0
+  IncomeRate: 0
+  SideNumber: 4
 --- !u!114 &114381541616123000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -918,7 +928,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainBox: {fileID: 114782470640727778}
+  rotateAmount: 0
+  boxSidePresent: 0
+  side: 
   IncomeHeld: 0
+  IncomeRate: 0
+  SideNumber: 2
 --- !u!114 &114582914647993700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -931,7 +946,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainBox: {fileID: 114782470640727778}
+  rotateAmount: 0
+  boxSidePresent: 0
+  side: 
   IncomeHeld: 0
+  IncomeRate: 0
+  SideNumber: 1
 --- !u!114 &114681268366205192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -944,7 +964,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainBox: {fileID: 114782470640727778}
+  rotateAmount: 0
+  boxSidePresent: 0
+  side: 
   IncomeHeld: 0
+  IncomeRate: 0
+  SideNumber: 3
 --- !u!114 &114782470640727778
 MonoBehaviour:
   m_ObjectHideFlags: 1

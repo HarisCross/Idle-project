@@ -14,20 +14,42 @@ public class BoxSideController : MonoBehaviour {
     public string side = "";
     public float IncomeHeld = 0;
     public float IncomeRate = 0f;
-
+    public float transferRate = 2.5f;
 
     //box side values//
+
+    public int SideNumber;
 
     // Use this for initialization
     void Start () {
 		
 	}
-	void IncomeUpdate()
-    {
 
+    public void Timedpdate()
+    {
+        IncomeHeld += IncomeRate;
+
+
+        //add to main box
+        //take from incomeheld
+        if(IncomeHeld > transferRate)
+        {
+            //if held is more than transfer rate
+
+            MainBox.AddIncome(transferRate);
+            IncomeHeld -= transferRate;
+
+        }
+        else
+        {
+            //if held isnt more than rate
+
+            MainBox.AddIncome(IncomeHeld);
+            IncomeHeld -= IncomeHeld;
+        }
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 
         if (MainBox == null)
         {

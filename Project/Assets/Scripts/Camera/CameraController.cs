@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    //git test
     private int screenWidth, screenHeight,movementSpeed = 5;
     public int edgeBoundary = 50;
     public float CameraHeight = 3f;

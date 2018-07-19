@@ -8,6 +8,12 @@ public class BoxController : MonoBehaviour {
 
     private bool BoxFocused = false;
 
+    //box values//
+    [SerializePrivateVariables]
+    private float IncomeHeld = 0f;
+
+    //box values//
+
     private void Awake()
     {
 
@@ -33,6 +39,14 @@ public class BoxController : MonoBehaviour {
 
 
 
+    }
+    public void Timedpdate()
+    {
+
+    }
+    public void AddIncome(float amount)
+    {
+        IncomeHeld += amount;
     }
     // Use this for initialization
     void Start () {

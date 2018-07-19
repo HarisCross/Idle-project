@@ -9,6 +9,7 @@ public class UIInteraction : MonoBehaviour {
 
     private PlayerController player;
     private BoardController boardController;
+    private TimeController timeController;
 
     public bool menuDisplayed = false, moveMenu = false;
     private float currTime;
@@ -29,7 +30,7 @@ public class UIInteraction : MonoBehaviour {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         boardController = GameObject.Find("BoardGrid").GetComponent<BoardController>();
         ErrorText = GameObject.Find("ErrorDisplayText").GetComponent<Text>();
-        
+        timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
     }
 
     // Update is called once per frame
@@ -128,6 +129,7 @@ public class UIInteraction : MonoBehaviour {
 
             ErrorText.text = "";
 
+            timeController.UpdateAddList(Box);
 
         }
         else
@@ -199,19 +201,41 @@ public class UIInteraction : MonoBehaviour {
         {
             if(boxSideFocused.GetComponent<BoxSideController>().boxSidePresent == false)
             {
-                string sideName = "BoxSide1";
+                string sideName = "BoxSide1";//which side prefab to spawn in
+                int sideNumber = boxSideFocused.GetComponent<BoxSideController>().SideNumber;
                 boxSideFocused.GetComponent<BoxSideController>().boxSidePresent = true;
-                SpawnSideMain(sideName);
+                SpawnSideMain(sideName,sideNumber);
             }
         }
 
     }
     public void SpawnSide2()
-    {
+    {        
+        //  make if to check if side already present
+        if (boxSideFocused != null)
+        {
+            if (boxSideFocused.GetComponent<BoxSideController>().boxSidePresent == false)
+            {
+                string sideName = "BoxSide2";//which side prefab to spawn in
+                int sideNumber = boxSideFocused.GetComponent<BoxSideController>().SideNumber;
+                boxSideFocused.GetComponent<BoxSideController>().boxSidePresent = true;
+                SpawnSideMain(sideName, sideNumber);
+            }
+        }
 
     }
     public void SpawnSide3()
-    {
+    {        //  make if to check if side already present
+        if (boxSideFocused != null)
+        {
+            if (boxSideFocused.GetComponent<BoxSideController>().boxSidePresent == false)
+            {
+                string sideName = "BoxSide3";//which side prefab to spawn in
+                int sideNumber = boxSideFocused.GetComponent<BoxSideController>().SideNumber;
+                boxSideFocused.GetComponent<BoxSideController>().boxSidePresent = true;
+                SpawnSideMain(sideName, sideNumber);
+            }
+        }
 
     }
     public void DeleteSide()
@@ -222,7 +246,7 @@ public class UIInteraction : MonoBehaviour {
         //set all box side details on controller to null
         //set box side present to false//
     }
-    private void SpawnSideMain(string chosenSide)
+    private void SpawnSideMain(string chosenSide,int SideNumber)
     {
 
         //get side chosen
@@ -233,14 +257,57 @@ public class UIInteraction : MonoBehaviour {
         GameObject side;
         GameObject sideLoc = boxSideFocused;
 
-        Debug.Log(boxSideFocused.name);
+      //  Debug.Log(boxSideFocused.name);
         side = Instantiate(Resources.Load(chosenSide, typeof(GameObject))) as GameObject;
         side.transform.position = sideLoc.transform.position;
         side.transform.parent = sideLoc.transform;
-
-        sideLoc.transform.Rotate(0, -90, 0);
-
         boxSideFocused.transform.GetChild(0).gameObject.SetActive(false);
+
+        //switch to rotate side to display properly on each side
+
+        ///#####i have no clue why changing the X axis makes it rotate around the Y axisd like wanted but meh
+        switch (SideNumber)
+        {
+            case 1://y+90
+                     side.transform.Rotate(90, 0, 0,Space.Self);
+                   // side.transform.Rotate(Vector3.up * 90);
+               
+           // Debug.Log("Side 1");
+            break;
+            case 2://y+180
+                side.transform.Rotate(180, 0, 0, Space.Self);
+
+          //  Debug.Log("Side 2");
+
+            break;
+            case 3://y-90
+                side.transform.Rotate(-90, 0, 0, Space.Self);
+
+           // Debug.Log("Side 3");
+
+            break;
+            case 4://fine
+                side.transform.Rotate(0, 0, 0, Space.Self);
+
+           // Debug.Log("Side 4");
+
+            break;
+            case 5://z-90
+                side.transform.Rotate(0, 0, -90, Space.Self);//top
+
+         //   Debug.Log("Side 5");
+
+            break;
+            default:
+                //should never reach this
+                Debug.Log("switch - sdie number broken - UIinteraction");
+            break;
+
+
+        }
+
+      //  Debug.Log(side.gameObject.name);
+        timeController.UpdateAddList(sideLoc);
 
 
 
