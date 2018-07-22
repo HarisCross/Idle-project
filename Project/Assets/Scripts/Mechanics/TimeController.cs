@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour {
 
-    public float IncTime=0;
+    public float IncTime=2;
     private BoardController boardController;
     private RecieverController RecieverController;
 
@@ -35,17 +35,17 @@ public class TimeController : MonoBehaviour {
 
         if(newObject.GetComponent<BoxController>() != null)
         {
-            Debug.Log("added box");
+           // Debug.Log("added box");
             BoxList.Add(newObject);
         }
         if (newObject.GetComponent<BoxSideController>() != null)
         {
-            Debug.Log("added side");
+          //  Debug.Log("added side");
             SideList.Add(newObject);
         }
         if (newObject.GetComponent<ConnectorController>() != null)
         {
-            Debug.Log("added connectoe");
+           // Debug.Log("added connectoe");
             ConnectorList.Add(newObject);
         }
 

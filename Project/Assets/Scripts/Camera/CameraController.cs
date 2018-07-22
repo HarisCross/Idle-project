@@ -65,9 +65,10 @@ public class CameraController : MonoBehaviour {
 
                 currTime += Time.deltaTime / timeTaken;
                 transform.position = Vector3.Lerp(startPos, tPos, currTime);
-
-                transform.LookAt(targetPos.GetComponentInParent<BoxCollider>().transform);
-
+                if (targetPos != null)
+                {
+                    transform.LookAt(targetPos.GetComponentInParent<BoxCollider>().transform);
+                }
                 if (Vector3.Distance(transform.position, tPos) < 0.1f)
                 {
 

@@ -28,7 +28,7 @@ public class BoxSideController : MonoBehaviour {
     public void Timedpdate()
     {
         IncomeHeld += IncomeRate;
-
+       // Debug.Log("box side timed");
 
         //add to main box
         //take from incomeheld

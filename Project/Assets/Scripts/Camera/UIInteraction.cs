@@ -10,6 +10,9 @@ public class UIInteraction : MonoBehaviour {
     private PlayerController player;
     private BoardController boardController;
     private TimeController timeController;
+    public GameObject DeleteSideButton;
+    public GameObject DeleteBoxButton;
+    
 
     public bool menuDisplayed = false, moveMenu = false;
     private float currTime;
@@ -23,6 +26,8 @@ public class UIInteraction : MonoBehaviour {
     private RaycastHit hit;
 
     public GameObject boxSideFocused;
+    GameObject side;
+    GameObject sideLoc;
 
     void Start() {
 
@@ -37,10 +42,35 @@ public class UIInteraction : MonoBehaviour {
     void Update() {
         CheckUIDisplay();
 
+        //if looking at box then show box delete
+        //if looking at side then show side delete
+
+
+
+        if(side != null)
+        {
+            DeleteSideButton.SetActive(true);
+        }
+        else
+        {
+            DeleteSideButton.SetActive(false);
+        }
+
+        if(boxSideFocused != null && side == null)
+        {
+            DeleteBoxButton.SetActive(true);
+        }
+        else
+        {
+            DeleteBoxButton.SetActive(false);
+
+        }
+
 
     }
     private void CheckUIDisplay()
     {
+
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
         if (GameObject.Find("BoardGrid").GetComponent<BoardController>().DisplayAvail == false)
@@ -131,6 +161,8 @@ public class UIInteraction : MonoBehaviour {
 
             timeController.UpdateAddList(Box);
 
+            Box.GetComponent<BoxController>().SpaceTaken = hit.transform.gameObject;
+
         }
         else
         {
@@ -142,50 +174,7 @@ public class UIInteraction : MonoBehaviour {
 
 
     }
-    //private void MovingMenu()
-    //{
-
-
-    //    currTime += Time.deltaTime / timeTaken;
-    //    transform.position = Vector3.Lerp(startPos, tPos, currTime);
-
-    //    if (Vector3.Distance(transform.position, tPos) < 0.1f)
-    //    {
-
-    //        moveMenu = false;
-    //    }
-
-
-    //}
-    //public void Showmenu()
-    //{
-
-    //    if(menuDisplayed == true)
-    //    {
-    //        //move  menu back
-
-    //        startPos = this.transform.position;
-    //        currTime = 0;
-    //        tPos = this.transform.position;
-    //        tPos.x += 350;
-
-    //        moveMenu = true;
-    //        menuDisplayed = false;
-    //    }
-    //    else
-    //    {
-    //        //move menu out
-
-    //        startPos = this.transform.position;
-    //        tPos = this.transform.position;
-    //        currTime = 0;
-    //        tPos.x -= 350;
-
-    //        moveMenu = true;
-    //        menuDisplayed = true;
-    //    }
-
-    //}
+   
     public void SideListDisplay()
     {
         //show side option list - move to bottom of heirarchy
@@ -240,11 +229,43 @@ public class UIInteraction : MonoBehaviour {
     }
     public void DeleteSide()
     {
-        boxSideFocused.transform.GetChild(0).gameObject.SetActive(true);
-        boxSideFocused.GetComponent<BoxSideController>().boxSidePresent = false;
+       // Debug.Log(boxSideFocused.name);
+         boxSideFocused.transform.GetChild(0).gameObject.SetActive(true);
+         boxSideFocused.GetComponent<BoxSideController>().boxSidePresent = false;
+        boxSideFocused.GetComponent<BoxSideController>().IncomeHeld = 0;
+        boxSideFocused.GetComponent<BoxSideController>().IncomeRate = 0;
+
+        //  timeController.UpdateRemoveList(boxSideFocused.transform.GetChild(2).transform.gameObject);
+
+        timeController.UpdateRemoveList(boxSideFocused);
+
+
+
+
+        Destroy(boxSideFocused.transform.GetChild(2).gameObject);
+
+        side = null;
+
         //reactivate box//
         //set all box side details on controller to null
         //set box side present to false//
+        //delete the side spawned in
+    }
+    public void DeleteBox()
+    {
+        GameObject box = boxSideFocused.transform.parent.parent.transform.gameObject;
+        Debug.Log(box.name);
+
+        //update board grid!!!!!!!!!!!!!!!!!!!
+
+        timeController.UpdateRemoveList(box);
+
+        box.GetComponent<BoxController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        //updater the spaces bool values
+        Destroy(box);
+
+        boardController.UpdatePossBOSList();
+
     }
     private void SpawnSideMain(string chosenSide,int SideNumber)
     {
@@ -254,8 +275,8 @@ public class UIInteraction : MonoBehaviour {
         //spawn side specified on side with rotation
         //get box side details from boxed spawned and pass to box side controller
 
-        GameObject side;
-        GameObject sideLoc = boxSideFocused;
+         //side; // side spawned in
+         sideLoc = boxSideFocused; // the side attached too
 
       //  Debug.Log(boxSideFocused.name);
         side = Instantiate(Resources.Load(chosenSide, typeof(GameObject))) as GameObject;
@@ -309,6 +330,14 @@ public class UIInteraction : MonoBehaviour {
       //  Debug.Log(side.gameObject.name);
         timeController.UpdateAddList(sideLoc);
 
+
+        BoxSideDetails details = side.GetComponent<BoxSideDetails>();
+        BoxSideController sideController = sideLoc.GetComponent<BoxSideController>();
+
+        if (sideController == null) Debug.Log("SC empty");
+
+        sideController.IncomeRate = details.IncomeRate;
+        sideController.IncomeHeld = details.IncomeHeld;
 
 
     }

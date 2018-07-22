@@ -5,11 +5,12 @@ using UnityEngine;
 public class BoxController : MonoBehaviour {
 
    public  List<GameObject> boxSides = new List<GameObject>();
+    public GameObject SpaceTaken;
 
     private bool BoxFocused = false;
 
     //box values//
-    [SerializePrivateVariables]
+    [SerializeField]
     private float IncomeHeld = 0f;
 
     //box values//
@@ -46,6 +47,7 @@ public class BoxController : MonoBehaviour {
     }
     public void AddIncome(float amount)
     {
+     //   Debug.Log("incomed added to: " + this.name);
         IncomeHeld += amount;
     }
     // Use this for initialization
