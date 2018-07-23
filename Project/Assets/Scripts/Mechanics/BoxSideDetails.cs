@@ -11,6 +11,8 @@ public class BoxSideDetails : MonoBehaviour {
     public float IncomeHeld = 0;
     public float IncomeRate = 0f;
 
+    //public enum SideConnector { Input, Output, None }
+    //public SideConnector sideConnector = SideConnector.None;
 
     // Use this for initialization
     void Start () {

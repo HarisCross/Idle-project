@@ -80,13 +80,17 @@ public class CameraController : MonoBehaviour {
         }
 
     }
+    public void MoveBack()
+    {
+        MoveBackToOldPosition(oldPos);
+    }
     private void InputChecks()
     {
         if (Input.GetKey("space") && CameraLocked == true)
         {
 
             //targetPos = transform;
-            MoveBackToOldPosition(oldPos);
+        
         }
 
 

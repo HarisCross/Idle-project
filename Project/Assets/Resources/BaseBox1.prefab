@@ -897,6 +897,7 @@ MonoBehaviour:
   side: 
   IncomeHeld: 0
   IncomeRate: 0
+  transferRate: 2.5
   SideNumber: 5
 --- !u!114 &114211023669625528
 MonoBehaviour:
@@ -915,6 +916,7 @@ MonoBehaviour:
   side: 
   IncomeHeld: 0
   IncomeRate: 0
+  transferRate: 2.5
   SideNumber: 4
 --- !u!114 &114381541616123000
 MonoBehaviour:
@@ -933,6 +935,7 @@ MonoBehaviour:
   side: 
   IncomeHeld: 0
   IncomeRate: 0
+  transferRate: 2.5
   SideNumber: 2
 --- !u!114 &114582914647993700
 MonoBehaviour:
@@ -951,6 +954,7 @@ MonoBehaviour:
   side: 
   IncomeHeld: 0
   IncomeRate: 0
+  transferRate: 2.5
   SideNumber: 1
 --- !u!114 &114681268366205192
 MonoBehaviour:
@@ -969,6 +973,7 @@ MonoBehaviour:
   side: 
   IncomeHeld: 0
   IncomeRate: 0
+  transferRate: 2.5
   SideNumber: 3
 --- !u!114 &114782470640727778
 MonoBehaviour:
@@ -982,3 +987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxSides: []
+  SpaceTaken: {fileID: 0}
+  AdjSides: []
+  AdjObjOnSides: []
+  ExportObjects: []
+  IncomeHeld: 0
+  transferRate: 15

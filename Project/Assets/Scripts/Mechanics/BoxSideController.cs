@@ -8,6 +8,8 @@ public class BoxSideController : MonoBehaviour {
     public float rotateAmount;
     public bool boxSidePresent = false;
 
+    //public enum SideConnector { Input,Output,None}
+    //public SideConnector sideConnector = SideConnector.None;
 
     //box side values//
     // public enum SideType { Input, Output, BonusModifier }

@@ -10,6 +10,7 @@ public class UIInteraction : MonoBehaviour {
     private PlayerController player;
     private BoardController boardController;
     private TimeController timeController;
+    private CameraController camController;
     public GameObject DeleteSideButton;
     public GameObject DeleteBoxButton;
     
@@ -36,6 +37,7 @@ public class UIInteraction : MonoBehaviour {
         boardController = GameObject.Find("BoardGrid").GetComponent<BoardController>();
         ErrorText = GameObject.Find("ErrorDisplayText").GetComponent<Text>();
         timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
+        camController = GameObject.Find("Player").GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -227,6 +229,20 @@ public class UIInteraction : MonoBehaviour {
         }
 
     }
+    public void SpawnSide4()
+    {        //  make if to check if side already present
+        if (boxSideFocused != null)
+        {
+            if (boxSideFocused.GetComponent<BoxSideController>().boxSidePresent == false)
+            {
+                string sideName = "BoxSideConnector";//which side prefab to spawn in
+                int sideNumber = boxSideFocused.GetComponent<BoxSideController>().SideNumber;
+                boxSideFocused.GetComponent<BoxSideController>().boxSidePresent = true;
+                SpawnSideMain(sideName, sideNumber);
+            }
+        }
+
+    }
     public void DeleteSide()
     {
        // Debug.Log(boxSideFocused.name);
@@ -239,7 +255,12 @@ public class UIInteraction : MonoBehaviour {
 
         timeController.UpdateRemoveList(boxSideFocused);
 
+        if (boxSideFocused.GetComponent<BoxSideController>().side == "Connector")
+        {
+            //if the side is a connector
+            boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().ImpExpSides.Remove(boxSideFocused.GetComponent<BoxSideController>().gameObject);
 
+        }
 
 
         Destroy(boxSideFocused.transform.GetChild(2).gameObject);
@@ -265,6 +286,7 @@ public class UIInteraction : MonoBehaviour {
         Destroy(box);
 
         boardController.UpdatePossBOSList();
+        camController.MoveBack();
 
     }
     private void SpawnSideMain(string chosenSide,int SideNumber)
@@ -338,7 +360,15 @@ public class UIInteraction : MonoBehaviour {
 
         sideController.IncomeRate = details.IncomeRate;
         sideController.IncomeHeld = details.IncomeHeld;
+        // sideController.sideConnector = details.sideConnector;
+        sideController.side = details.side;
 
+        if(sideController.side == "Connector")
+        {
+            //if the side is a connector
+            sideController.MainBox.GetComponent<BoxController>().ImpExpSides.Add(sideController.gameObject);
+
+        }
 
     }
 }

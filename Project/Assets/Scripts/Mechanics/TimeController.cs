@@ -48,15 +48,17 @@ public class TimeController : MonoBehaviour {
            // Debug.Log("added connectoe");
             ConnectorList.Add(newObject);
         }
+        UpdateBoxExports();
 
     }
     public void UpdateRemoveList(GameObject RemoveObject)
     {
         //remove item from list of stuff to update
         //updateList.Remove(RemoveObject);
-
+       // RemoveObject.GetComponent<BoxController>().SpaceTaken.GetComponent<BoardSpaceController>().CurrentBox = null;
         if (RemoveObject.GetComponent<BoxController>() != null)
         {
+            RemoveObject.GetComponent<BoxController>().SpaceTaken.GetComponent<BoardSpaceController>().CurrentBox = null;
             BoxList.Remove(RemoveObject);
         }
         if (RemoveObject.GetComponent<BoxSideController>() != null)
@@ -65,9 +67,23 @@ public class TimeController : MonoBehaviour {
         }
         if (RemoveObject.GetComponent<ConnectorController>() != null)
         {
+            RemoveObject.GetComponent<ConnectorController>().SpaceTaken.GetComponent<BoardSpaceController>().CurrentBox = null;
             ConnectorList.Remove(RemoveObject);
         }
+        UpdateBoxExports();
+    }
+    private void UpdateBoxExports()
+    {
+        foreach(GameObject side in BoxList)
+        {
+            side.GetComponent<BoxController>().UpdateAbjObjOnSides();
 
+        }
+        foreach(GameObject side in ConnectorList)
+        {
+
+            side.GetComponent<ConnectorController>().UpdateAbjObjOnSides();
+        }
     }
     void TimeIncrementer()
     {
