@@ -11,7 +11,8 @@ public class BoxController : MonoBehaviour {
     public List<GameObject> AdjSides;//sides next to this box
     public List<GameObject> AdjObjOnSides;
 
-    public List<GameObject> ExportObjects;//to store the items to send money too
+   // public List<GameObject> ConnectorSides;
+    public List<GameObject> ExportSides;//to store the items to send money too
     public List<GameObject> AcceptingSides;//sides which this can accept from
 
     public List<GameObject> ImpExpSides;//sides with a connector
@@ -81,10 +82,16 @@ public class BoxController : MonoBehaviour {
         }
 
 	}
+    public  void UpdateLists()
+    {
 
+
+
+
+    }
     public void UpdateAbjObjOnSides()//called when change oocurs to map to update adj objects
     {
-        AdjObjOnSides.Clear();
+
         foreach(GameObject side in AdjSides)
         {
 
@@ -99,5 +106,38 @@ public class BoxController : MonoBehaviour {
 
 
     }
-   
+    public void UpdateInpExpLists()
+    {
+        ExportSides.Clear();
+        AcceptingSides.Clear();
+        foreach(GameObject connector in ImpExpSides)
+        {
+            
+            switch (connector.GetComponent<BoxSideController>().connectorStatus)
+            {
+
+                case 0:
+                    //not connector
+                    Debug.Log("somehow connector hasnt been assigned as a connector");
+                    break;
+                case 1:
+                    //exp side
+                    ExportSides.Add(connector);
+
+                    break;
+                case 2:
+                    //inp side
+                    AcceptingSides.Add(connector);
+
+                    break;
+                default:
+
+                    break;
+
+            }
+        }
+
+
+
+    }
 }

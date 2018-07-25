@@ -90,6 +90,8 @@ public class CameraController : MonoBehaviour {
         {
 
             //targetPos = transform;
+            MoveBack();
+            uiInteraction.DisableSideButtons();
         
         }
 
@@ -128,7 +130,7 @@ public class CameraController : MonoBehaviour {
         sideFocused = true;
         uiInteraction.boxSideFocused = side;
         BoxFocusedTrigger(focus);
-
+        uiInteraction.ClickedOnSide();
 
     }
     public void MoveBackToOldPosition(Vector3 pos)//moves caerma to pos before clicking the item

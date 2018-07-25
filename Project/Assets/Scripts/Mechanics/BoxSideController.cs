@@ -17,6 +17,7 @@ public class BoxSideController : MonoBehaviour {
     public float IncomeHeld = 0;
     public float IncomeRate = 0f;
     public float transferRate = 2.5f;
+    public int connectorStatus = 0;//0 for not, 1 for exp, 2 for inp
 
     //box side values//
 

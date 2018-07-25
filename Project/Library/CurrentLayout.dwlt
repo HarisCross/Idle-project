@@ -111,7 +111,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 342}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 117
+  controlID: 26
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.10742355, y: 0.081926696, z: -0.008882109, w: 0.99079245}
     speed: 2
-    m_Value: {x: 0.10742354, y: 0.08192669, z: -0.008882108, w: 0.99079233}
+    m_Value: {x: -0.10742355, y: -0.0819267, z: 0.008882109, w: -0.9907925}
   m_Size:
     m_Target: 682.9184
     speed: 2
@@ -445,21 +445,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 2af0fbff30f0fbff5407fcff8007fcff8607fcff1029fcff3c29fcff4229fcffe646fcfffa46fcff0e47fcff2647fcff2c47fcffac68fcffc068fcffd468fcffe868fcfffc68fcff0069fcff0669fcff9adbfcffaedbfcffc2dbfcffd6dbfcffdadbfcffe0dbfcff8aa4fdff8ca4fdffc2cefdff4cfbffff00000000ee2c0000422d0000302e0000462e0000982e0000d22e0000542f0000bc2f0000d02f0000323000003e300000aa30000040310000
+    m_ExpandedIDs: 3038feff3638feff0a30ffff4a54ffff5e54ffff7254ffff8654ffff9a54ffff9e54ffffa454ffffe66bffffec6bffff40acffff54acffff68acffff7cacffff90acffff94acffff9aacffff4cfbffff000000004a2e0000082f0000582f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: BoxHolder
+      m_OriginalName: BoxHolder
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 12120
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -506,20 +506,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Assests/Visual
+    - Assets/Scripts/Camera
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Assests/Visual
+  - Assets/Scripts/Camera
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\haris\Documents\GitHub\Idle-project\Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 662c0000
-    m_LastClickedID: 11366
-    m_ExpandedIDs: 00000000ae290000cc2a0000fe2a0000022b0000542b000000ca9a3bffffff7f
+    m_SelectedIDs: 7a2b0000
+    m_LastClickedID: 11130
+    m_ExpandedIDs: 00000000ae290000d02a0000022b0000062b0000582b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -547,7 +547,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ae290000cc2a0000fe2a0000022b0000542b0000
+    m_ExpandedIDs: 00000000ae290000d02a0000022b0000062b0000582b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

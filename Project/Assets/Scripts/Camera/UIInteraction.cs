@@ -13,7 +13,7 @@ public class UIInteraction : MonoBehaviour {
     private CameraController camController;
     public GameObject DeleteSideButton;
     public GameObject DeleteBoxButton;
-    
+    public GameObject ConnSwapButton;
 
     public bool menuDisplayed = false, moveMenu = false;
     private float currTime;
@@ -26,8 +26,8 @@ public class UIInteraction : MonoBehaviour {
     private Ray ray;
     private RaycastHit hit;
 
-    public GameObject boxSideFocused;
-    GameObject side;
+    public GameObject boxSideFocused;//the numbered side with controller
+    GameObject side;//side object spawned in
     GameObject sideLoc;
 
     void Start() {
@@ -44,23 +44,51 @@ public class UIInteraction : MonoBehaviour {
     void Update() {
         CheckUIDisplay();
 
+
+        ButtonUpdate();
+
+
+
+
+    }
+    public void ClickedOnSide()
+    {
+        if(boxSideFocused != null)
+        {
+            side = boxSideFocused.transform.GetChild(1).gameObject;
+        }
+
+    }
+    private void ButtonUpdate()
+    {
+
         //if looking at box then show box delete
         //if looking at side then show side delete
 
-
-
-        if(side != null)
+        if (side != null)
         {
             DeleteSideButton.SetActive(true);
+            //  Debug.Log(side.gameObject.name);
+            if (boxSideFocused.GetComponent<BoxSideController>().side == "Connector")
+            {
+                ConnSwapButton.SetActive(true);
+
+            }
+            else
+            {
+                ConnSwapButton.SetActive(false);
+            }
         }
         else
         {
+            ConnSwapButton.SetActive(false);
             DeleteSideButton.SetActive(false);
         }
 
-        if(boxSideFocused != null && side == null)
+        if (boxSideFocused != null && side == null)
         {
             DeleteBoxButton.SetActive(true);
+
         }
         else
         {
@@ -69,6 +97,12 @@ public class UIInteraction : MonoBehaviour {
         }
 
 
+    }
+    public void DisableSideButtons()
+    {
+
+        side = null;
+        //DeleteSideButton.SetActive(false);
     }
     private void CheckUIDisplay()
     {
@@ -243,6 +277,21 @@ public class UIInteraction : MonoBehaviour {
         }
 
     }
+    public void SwapConnStatus()
+    {
+        //swap connector from inp <-> exp and refresh lists
+
+        if(boxSideFocused.GetComponent<BoxSideController>().connectorStatus == 1)
+        {
+            boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 2;
+        }
+        else
+        {
+            boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
+        }
+
+        boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
+    }
     public void DeleteSide()
     {
        // Debug.Log(boxSideFocused.name);
@@ -259,13 +308,18 @@ public class UIInteraction : MonoBehaviour {
         {
             //if the side is a connector
             boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().ImpExpSides.Remove(boxSideFocused.GetComponent<BoxSideController>().gameObject);
+            boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
+            boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
 
         }
 
+        sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
 
         Destroy(boxSideFocused.transform.GetChild(2).gameObject);
 
         side = null;
+
+        
 
         //reactivate box//
         //set all box side details on controller to null
@@ -287,7 +341,7 @@ public class UIInteraction : MonoBehaviour {
 
         boardController.UpdatePossBOSList();
         camController.MoveBack();
-
+        sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
     }
     private void SpawnSideMain(string chosenSide,int SideNumber)
     {
@@ -367,8 +421,9 @@ public class UIInteraction : MonoBehaviour {
         {
             //if the side is a connector
             sideController.MainBox.GetComponent<BoxController>().ImpExpSides.Add(sideController.gameObject);
-
+            boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
+            sideController.MainBox.GetComponent<BoxController>().UpdateInpExpLists();
         }
-
+        sideController.MainBox.GetComponent<BoxController>().UpdateLists();
     }
 }
