@@ -17,6 +17,7 @@ public class BoxController : MonoBehaviour {
 
     public List<GameObject> ImpExpSides;//sides with a connector
 
+    public List<GameObject> NearBoxes;
 
 
     private bool BoxFocused = false;
@@ -137,7 +138,26 @@ public class BoxController : MonoBehaviour {
             }
         }
 
+        
+
+    }
+
+    public void GetNearObjects(Transform pos)
+    {
+        Debug.Log("Drawn ray");
+
+        Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
+        Debug.DrawRay(pos.position, Vector3.forward, Color.green);
 
 
     }
+
+
+
+
+
+
+
+
+
 }

@@ -14,6 +14,7 @@ public class UIInteraction : MonoBehaviour {
     public GameObject DeleteSideButton;
     public GameObject DeleteBoxButton;
     public GameObject ConnSwapButton;
+    public Text ConnStatusText;
 
     public bool menuDisplayed = false, moveMenu = false;
     private float currTime;
@@ -62,6 +63,8 @@ public class UIInteraction : MonoBehaviour {
     private void ButtonUpdate()
     {
 
+
+
         //if looking at box then show box delete
         //if looking at side then show side delete
 
@@ -72,11 +75,13 @@ public class UIInteraction : MonoBehaviour {
             if (boxSideFocused.GetComponent<BoxSideController>().side == "Connector")
             {
                 ConnSwapButton.SetActive(true);
+                ConnStatusText.gameObject.SetActive(true);
 
             }
             else
             {
                 ConnSwapButton.SetActive(false);
+                ConnStatusText.gameObject.SetActive(false);
             }
         }
         else
@@ -84,6 +89,35 @@ public class UIInteraction : MonoBehaviour {
             ConnSwapButton.SetActive(false);
             DeleteSideButton.SetActive(false);
         }
+
+        if (ConnStatusText.IsActive() & boxSideFocused)
+        {
+
+
+            switch (boxSideFocused.GetComponent<BoxSideController>().connectorStatus)
+            {
+
+                case 0:
+                    //not connector
+                    Debug.Log("somehow connector hasnt been assigned as a connector");
+                    break;
+                case 1:
+                    //exp side
+                    ConnStatusText.text = "ConnStatus: Export";
+
+                    break;
+                case 2:
+                    ConnStatusText.text = "ConnStatus: Input";
+
+                    break;
+                default:
+
+                    break;
+
+            }
+
+        }
+        else { ConnStatusText.gameObject.SetActive(false); }
 
         if (boxSideFocused != null && side == null)
         {
@@ -281,14 +315,18 @@ public class UIInteraction : MonoBehaviour {
     {
         //swap connector from inp <-> exp and refresh lists
 
-        if(boxSideFocused.GetComponent<BoxSideController>().connectorStatus == 1)
-        {
-            boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 2;
-        }
-        else
-        {
-            boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
-        }
+            if (boxSideFocused.GetComponent<BoxSideController>().connectorStatus == 1)
+            {
+                boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 2;
+                Debug.Log("Conn status changed to 2");
+            }
+            else
+            {
+                boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
+                Debug.Log("Conn status changed to 1");
+
+            }
+        
 
         boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
     }
@@ -309,6 +347,7 @@ public class UIInteraction : MonoBehaviour {
             //if the side is a connector
             boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().ImpExpSides.Remove(boxSideFocused.GetComponent<BoxSideController>().gameObject);
             boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
+
             boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
 
         }
@@ -422,6 +461,7 @@ public class UIInteraction : MonoBehaviour {
             //if the side is a connector
             sideController.MainBox.GetComponent<BoxController>().ImpExpSides.Add(sideController.gameObject);
             boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
+
             sideController.MainBox.GetComponent<BoxController>().UpdateInpExpLists();
         }
         sideController.MainBox.GetComponent<BoxController>().UpdateLists();

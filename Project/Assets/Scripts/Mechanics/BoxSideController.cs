@@ -26,6 +26,8 @@ public class BoxSideController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		
+
+
 	}
 
     public void Timedpdate()
@@ -70,6 +72,13 @@ public class BoxSideController : MonoBehaviour {
             }
 
         }
+
+       
+        if(side == "Connector")
+        {
+            MainBox.GetNearObjects(this.gameObject.transform);
+        }
+
 
     }
 }

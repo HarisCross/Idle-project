@@ -86,7 +86,7 @@ public class CameraController : MonoBehaviour {
     }
     private void InputChecks()
     {
-        if (Input.GetKey("space") && CameraLocked == true)
+        if (Input.GetMouseButton(1) && CameraLocked == true)
         {
 
             //targetPos = transform;
@@ -161,7 +161,7 @@ public class CameraController : MonoBehaviour {
         foreach (GameObject child in boxes)
         {
 
-            Debug.Log(focus.gameObject.name + " : "+ child.gameObject.name);
+            //Debug.Log(focus.gameObject.name + " : "+ child.gameObject.name);
 
 
             if (focus != child) {
