@@ -17,18 +17,19 @@ public class BoxSideController : MonoBehaviour {
     public float IncomeHeld = 0;
     public float IncomeRate = 0f;
     public float transferRate = 2.5f;
-    public int connectorStatus = 0;//0 for not, 1 for exp, 2 for inp
 
+    public int connectorStatus = 0;//0 for not, 1 for exp, 2 for inp
+    public GameObject inpExpSide;
     //box side values//
 
     public int SideNumber;
 
     // Use this for initialization
     void Start () {
-		
 
 
-	}
+
+    }
 
     public void Timedpdate()
     {
@@ -73,10 +74,10 @@ public class BoxSideController : MonoBehaviour {
 
         }
 
-       
-        if(side == "Connector")
+
+        if (side == "Connector" & inpExpSide == null)
         {
-            MainBox.GetNearObjects(this.gameObject.transform);
+           inpExpSide =  MainBox.GetNearObjects(this.gameObject.transform,true);
         }
 
 

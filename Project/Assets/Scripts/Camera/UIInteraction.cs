@@ -28,7 +28,7 @@ public class UIInteraction : MonoBehaviour {
     private RaycastHit hit;
 
     public GameObject boxSideFocused;//the numbered side with controller
-    GameObject side;//side object spawned in
+    public GameObject side;//side object spawned in
     GameObject sideLoc;
 
     void Start() {
@@ -54,7 +54,7 @@ public class UIInteraction : MonoBehaviour {
     }
     public void ClickedOnSide()
     {
-        if(boxSideFocused != null)
+        if (boxSideFocused != null & boxSideFocused.transform.childCount >=3)
         {
             side = boxSideFocused.transform.GetChild(1).gameObject;
         }
@@ -349,6 +349,7 @@ public class UIInteraction : MonoBehaviour {
             boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
 
             boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
+            boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().RemoveNearTile(boxSideFocused);
 
         }
 

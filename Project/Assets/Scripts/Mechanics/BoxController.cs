@@ -17,10 +17,11 @@ public class BoxController : MonoBehaviour {
 
     public List<GameObject> ImpExpSides;//sides with a connector
 
-    public List<GameObject> NearBoxes;
+    public List<GameObject> SurroundingTiles;
 
 
     private bool BoxFocused = false;
+    GameObject closest;
 
     //box values//
     [SerializeField]
@@ -141,15 +142,49 @@ public class BoxController : MonoBehaviour {
         
 
     }
-
-    public void GetNearObjects(Transform pos)
+    public void RemoveNearTile(GameObject tile)//remove the inp/exp tile from the list
     {
-        Debug.Log("Drawn ray");
+       GameObject tileToRemove= GetNearObjects(tile.transform,false);
 
-        Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
-        Debug.DrawRay(pos.position, Vector3.forward, Color.green);
+        SurroundingTiles.Remove(tileToRemove);
+
+    }
+    public GameObject GetNearObjects(Transform pos,bool AddTile)
+    {
+        closest = null;
+       
 
 
+        foreach (GameObject side in AdjSides)
+        {
+
+
+            if(closest == null)
+            {
+                closest = side;
+            }
+            else
+            {
+                float dist = Vector3.Distance(pos.position, side.transform.position);
+              //  Debug.Log("dist: " + dist);
+
+                if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
+                {
+                    closest = side;
+                }
+
+
+            }
+
+        }
+
+        //  Debug.Log("closest is: " + closest.name);
+        if (AddTile)
+        {
+            SurroundingTiles.Add(closest.gameObject);
+        }
+
+        return closest;
     }
 
 
