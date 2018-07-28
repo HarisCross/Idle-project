@@ -898,6 +898,8 @@ MonoBehaviour:
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
   SideNumber: 5
 --- !u!114 &114211023669625528
 MonoBehaviour:
@@ -917,6 +919,8 @@ MonoBehaviour:
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
   SideNumber: 4
 --- !u!114 &114381541616123000
 MonoBehaviour:
@@ -936,6 +940,8 @@ MonoBehaviour:
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
   SideNumber: 2
 --- !u!114 &114582914647993700
 MonoBehaviour:
@@ -955,6 +961,8 @@ MonoBehaviour:
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
   SideNumber: 1
 --- !u!114 &114681268366205192
 MonoBehaviour:
@@ -974,6 +982,8 @@ MonoBehaviour:
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
   SideNumber: 3
 --- !u!114 &114782470640727778
 MonoBehaviour:
@@ -990,6 +1000,11 @@ MonoBehaviour:
   SpaceTaken: {fileID: 0}
   AdjSides: []
   AdjObjOnSides: []
-  ExportObjects: []
-  IncomeHeld: 0
+  ExportSides: []
+  AcceptingSides: []
+  ImpExpSides: []
+  SurroundingTiles: []
+  BoxesToExport: []
+  BoxesToImport: []
+  IncomeHeld: 1000
   transferRate: 15

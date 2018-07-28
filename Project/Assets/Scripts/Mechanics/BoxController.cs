@@ -19,6 +19,8 @@ public class BoxController : MonoBehaviour {
 
     public List<GameObject> SurroundingTiles;
 
+    public List<GameObject> BoxesToExport = new List<GameObject>();
+    public List<GameObject> BoxesToImport = new List<GameObject>();
 
     private bool BoxFocused = false;
     GameObject closest;
@@ -58,6 +60,86 @@ public class BoxController : MonoBehaviour {
     }
     public void Timedpdate()
     {
+            MoneyTransferExport();////add check to see if the box potentialy being added too has an import plug
+
+
+    }
+    private bool CanTransfer(GameObject box)
+    {
+        bool ret = false;
+      //  Debug.Log(box.name);
+        if (box.GetComponent<BoxController>().BoxesToImport.Count != 0)
+        {
+            foreach (GameObject pot in box.GetComponent<BoxController>().BoxesToImport)
+            {
+                if (pot.gameObject == this.gameObject)
+                {
+                    Debug.Log("can trasnfer: pass");
+                    ret = true;
+
+                }
+                else
+                {
+                    Debug.Log("can trasnfer: fail: " + pot.gameObject + " : " + this.gameObject);
+                    ret = false;
+                }
+            }
+        }
+
+
+        return ret;
+    }
+    private void MoneyTransferExport()
+    {
+
+        IncomeHeld = Mathf.Round(IncomeHeld);
+        int count = BoxesToExport.Count;
+        float moneySplit;
+
+        foreach (GameObject box in BoxesToExport)
+        {
+            if(CanTransfer(box) == false)
+            {
+                return;
+            }
+
+            if (IncomeHeld > transferRate)
+            {
+                //if held is more than transfer rate
+                // box.AddIncome(transferRate);
+
+
+                moneySplit = Mathf.Round((transferRate / count));
+
+
+                box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+
+                Debug.Log("TRansfered money");
+
+
+                IncomeHeld -= transferRate;
+            }
+            else
+            {
+                //if held isnt more than rate
+                //  box.AddIncome(IncomeHeld);
+
+                moneySplit = Mathf.Round(IncomeHeld / count);
+
+
+                box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+                Debug.Log("TRansfered money");
+
+
+                IncomeHeld -= IncomeHeld;
+            }
+
+        }
+   
+
+
+
+
 
     }
     public void AddIncome(float amount)
@@ -68,8 +150,8 @@ public class BoxController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-      
 
+        UpdateConnObj();
 
 
     }
@@ -84,13 +166,6 @@ public class BoxController : MonoBehaviour {
         }
 
 	}
-    public  void UpdateLists()
-    {
-
-
-
-
-    }
     public void UpdateAbjObjOnSides()//called when change oocurs to map to update adj objects
     {
 
@@ -137,9 +212,10 @@ public class BoxController : MonoBehaviour {
                     break;
 
             }
+            UpdateConnObj();
         }
 
-        
+
 
     }
     public void RemoveNearTile(GameObject tile)//remove the inp/exp tile from the list
@@ -147,6 +223,7 @@ public class BoxController : MonoBehaviour {
        GameObject tileToRemove= GetNearObjects(tile.transform,false);
 
         SurroundingTiles.Remove(tileToRemove);
+
 
     }
     public GameObject GetNearObjects(Transform pos,bool AddTile)
@@ -165,7 +242,7 @@ public class BoxController : MonoBehaviour {
             }
             else
             {
-                float dist = Vector3.Distance(pos.position, side.transform.position);
+                //float dist = Vector3.Distance(pos.position, side.transform.position);
               //  Debug.Log("dist: " + dist);
 
                 if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
@@ -182,13 +259,45 @@ public class BoxController : MonoBehaviour {
         if (AddTile)
         {
             SurroundingTiles.Add(closest.gameObject);
-        }
 
+        }
+        UpdateConnObj();
         return closest;
     }
 
+    public void UpdateConnObj()
+    {
+        BoxesToExport.Clear();
+        BoxesToImport.Clear();
 
 
+        //use bsc - connector, 2 or 1, tile. update whenever it changes
+
+        foreach(GameObject side in ExportSides)
+        {
+            //Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+            if (side.GetComponent<BoxSideController>().inpExpSide != null)
+            BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+
+
+        }
+
+
+        foreach (GameObject side in AcceptingSides)
+        {
+           // Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+            if (side.GetComponent<BoxSideController>().inpExpSide != null)
+                BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+
+
+        }
+
+
+
+
+
+
+    }
 
 
 

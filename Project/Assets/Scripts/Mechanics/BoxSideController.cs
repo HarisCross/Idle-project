@@ -80,6 +80,32 @@ public class BoxSideController : MonoBehaviour {
            inpExpSide =  MainBox.GetNearObjects(this.gameObject.transform,true);
         }
 
+        
 
+        TEMPSideConnectorCol();
+    }
+    void TEMPSideConnectorCol()
+    {
+        if (connectorStatus != 0)
+        {
+            Material mat = transform.GetChild(2).transform.GetChild(0).transform.GetComponent<MeshRenderer>().material;
+
+
+            switch (connectorStatus)
+            {
+                case 1:
+
+                    mat.color = Color.red;
+
+
+                    break;
+                case 2:
+                    mat.color = Color.blue;
+
+
+                    break;
+            }
+
+        }
     }
 }

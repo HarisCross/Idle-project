@@ -318,12 +318,12 @@ public class UIInteraction : MonoBehaviour {
             if (boxSideFocused.GetComponent<BoxSideController>().connectorStatus == 1)
             {
                 boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 2;
-                Debug.Log("Conn status changed to 2");
+                //Debug.Log("Conn status changed to 2");
             }
             else
             {
                 boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
-                Debug.Log("Conn status changed to 1");
+               // Debug.Log("Conn status changed to 1");
 
             }
         
@@ -353,7 +353,7 @@ public class UIInteraction : MonoBehaviour {
 
         }
 
-        sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
+        //sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
 
         Destroy(boxSideFocused.transform.GetChild(2).gameObject);
 
@@ -381,7 +381,7 @@ public class UIInteraction : MonoBehaviour {
 
         boardController.UpdatePossBOSList();
         camController.MoveBack();
-        sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
+        //sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
     }
     private void SpawnSideMain(string chosenSide,int SideNumber)
     {
@@ -465,6 +465,6 @@ public class UIInteraction : MonoBehaviour {
 
             sideController.MainBox.GetComponent<BoxController>().UpdateInpExpLists();
         }
-        sideController.MainBox.GetComponent<BoxController>().UpdateLists();
+       // sideController.MainBox.GetComponent<BoxController>().UpdateLists();
     }
 }

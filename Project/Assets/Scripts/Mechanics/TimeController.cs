@@ -77,6 +77,7 @@ public class TimeController : MonoBehaviour {
         foreach(GameObject side in BoxList)
         {
             side.GetComponent<BoxController>().UpdateAbjObjOnSides();
+            side.GetComponent<BoxController>().UpdateConnObj();
 
         }
         foreach(GameObject side in ConnectorList)
