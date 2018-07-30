@@ -8,6 +8,7 @@ TagManager:
   - BoxSide
   - BoxReciever
   - BoardSpace
+  - BoxConnector
   layers:
   - Default
   - TransparentFX

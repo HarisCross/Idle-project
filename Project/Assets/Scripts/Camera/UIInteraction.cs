@@ -464,6 +464,8 @@ public class UIInteraction : MonoBehaviour {
             boxSideFocused.GetComponent<BoxSideController>().connectorStatus = 1;
 
             sideController.MainBox.GetComponent<BoxController>().UpdateInpExpLists();
+            sideController.MainBox.GetComponent<BoxController>().UpdateConnObj(); 
+
         }
        // sideController.MainBox.GetComponent<BoxController>().UpdateLists();
     }

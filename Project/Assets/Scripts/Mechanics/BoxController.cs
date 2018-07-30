@@ -67,9 +67,13 @@ public class BoxController : MonoBehaviour {
     private bool CanTransfer(GameObject box)
     {
         bool ret = false;
-      //  Debug.Log(box.name);
-        if (box.GetComponent<BoxController>().BoxesToImport.Count != 0)
+        Debug.Log(box.name);
+
+
+        if (box.GetComponent<BoxController>() != null)
         {
+            Debug.Log("transferred to box");
+
             foreach (GameObject pot in box.GetComponent<BoxController>().BoxesToImport)
             {
                 if (pot.gameObject == this.gameObject)
@@ -86,12 +90,64 @@ public class BoxController : MonoBehaviour {
             }
         }
 
+        if(box.GetComponent<ConnectorController>() != null)
+        {
+            Debug.Log("transferred to connectror");
+
+            foreach (GameObject pot in box.GetComponent<ConnectorController>().BoxesToImport)
+            {
+                if (pot.gameObject == this.gameObject)
+                {
+                    Debug.Log("can trasnfer: pass");
+                    ret = true;
+
+                }
+                else
+                {
+                    Debug.Log("can trasnfer: fail: " + pot.gameObject + " : " + this.gameObject);
+                    ret = false;
+                }
+
+            }
+
+
+
+        }
+
+
+        if(box.GetComponent<RecieverController>() != null)
+        {
+            Debug.Log("transferred to rec");
+
+
+            foreach (GameObject pot in box.GetComponent<RecieverController>().BoxesToImport)
+            {
+                Debug.Log(pot.name + this.name);
+                if (pot.gameObject == this.gameObject)
+                {
+                    Debug.Log("can trasnfer: pass");
+                    ret = true;
+
+                }
+                else
+                {
+                    Debug.Log("can trasnfer: fail: " + pot.gameObject + " : " + this.gameObject);
+                    ret = false;
+                }
+
+            }
+
+
+        }
+
+        
+
 
         return ret;
     }
     private void MoneyTransferExport()
     {
-
+        
         IncomeHeld = Mathf.Round(IncomeHeld);
         int count = BoxesToExport.Count;
         float moneySplit;
@@ -100,6 +156,7 @@ public class BoxController : MonoBehaviour {
         {
             if(CanTransfer(box) == false)
             {
+              //  Debug.Log("can trasnfer failed");
                 return;
             }
 
@@ -112,7 +169,32 @@ public class BoxController : MonoBehaviour {
                 moneySplit = Mathf.Round((transferRate / count));
 
 
-                box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+                if (box.GetComponent<BoxController>() != null)
+                {
+
+                    box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+
+
+                }
+
+                if (box.GetComponent<ConnectorController>() != null)
+                {
+
+                    box.GetComponent<ConnectorController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+                if (box.GetComponent<RecieverController>() != null)
+                {
+                    box.GetComponent<RecieverController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+
 
                 Debug.Log("TRansfered money");
 
@@ -127,7 +209,37 @@ public class BoxController : MonoBehaviour {
                 moneySplit = Mathf.Round(IncomeHeld / count);
 
 
-                box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+                if (box.GetComponent<BoxController>() != null)
+                {
+
+                    box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+
+
+                }
+
+                if (box.GetComponent<ConnectorController>() != null)
+                {
+
+                    box.GetComponent<ConnectorController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+                if (box.GetComponent<RecieverController>() != null)
+                {
+                    box.GetComponent<RecieverController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+
+
+
+
+
+
                 Debug.Log("TRansfered money");
 
 

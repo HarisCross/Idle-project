@@ -7,7 +7,7 @@ public class BoxSideController : MonoBehaviour {
     public BoxController MainBox;
     public float rotateAmount;
     public bool boxSidePresent = false;
-
+    public bool Rec = false;
     //public enum SideConnector { Input,Output,None}
     //public SideConnector sideConnector = SideConnector.None;
 
@@ -56,33 +56,35 @@ public class BoxSideController : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-
-        if (MainBox == null)
+        if (Rec == false)
         {
-
-            Collider[] col = Physics.OverlapSphere(this.transform.position, 1f);
-            int i = 0;
-            while (i < col.Length)
+            if (MainBox == null)
             {
-                if (col[i].transform.gameObject.tag == "MainBox")
-                {
-                    MainBox = col[i].transform.gameObject.GetComponent<BoxController>();
-                    MainBox.boxSides.Add(this.transform.gameObject);
 
+                Collider[] col = Physics.OverlapSphere(this.transform.position, 1f);
+                int i = 0;
+                while (i < col.Length)
+                {
+                    if (col[i].transform.gameObject.tag == "MainBox")
+                    {
+                        MainBox = col[i].transform.gameObject.GetComponent<BoxController>();
+                        MainBox.boxSides.Add(this.transform.gameObject);
+
+                    }
                 }
+
             }
 
+
+            if (side == "Connector" & inpExpSide == null)
+            {
+                inpExpSide = MainBox.GetNearObjects(this.gameObject.transform, true);
+            }
+
+
+
+            TEMPSideConnectorCol();
         }
-
-
-        if (side == "Connector" & inpExpSide == null)
-        {
-           inpExpSide =  MainBox.GetNearObjects(this.gameObject.transform,true);
-        }
-
-        
-
-        TEMPSideConnectorCol();
     }
     void TEMPSideConnectorCol()
     {

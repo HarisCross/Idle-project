@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour {
 
     float timeTaken = 3f, currTime;
     Vector3 startPos,tPos,oldPos;
-
+    List<GameObject> boxes = new List<GameObject>();
     public float RotSpeed = 3;
 
     float yaw = 0f, pitch = 0f;
@@ -151,12 +151,15 @@ public class CameraController : MonoBehaviour {
     }
     void BoxFocusedTrigger(GameObject focus)//only shows the focued box, rest are invisbile
     {
-
+        boxes.Clear();
         //get all boxes
         //set all invis
         //change one selected to vis
 
-        GameObject[] boxes = GameObject.FindGameObjectsWithTag("MainBox");
+        boxes.AddRange(GameObject.FindGameObjectsWithTag("MainBox"));
+        boxes.AddRange(GameObject.FindGameObjectsWithTag("BoxReciever"));
+        boxes.AddRange(GameObject.FindGameObjectsWithTag("BoxConnector"));
+        
 
         foreach (GameObject child in boxes)
         {
@@ -182,9 +185,13 @@ public class CameraController : MonoBehaviour {
     }
     void BoxNotFocused()//shows all boxes again
     {
-        GameObject[] boxes = GameObject.FindGameObjectsWithTag("MainBox");
+        boxes.Clear();
 
         //set all to active
+        boxes.AddRange(GameObject.FindGameObjectsWithTag("MainBox"));
+        boxes.AddRange(GameObject.FindGameObjectsWithTag("BoxReciever"));
+        boxes.AddRange(GameObject.FindGameObjectsWithTag("BoxConnector"));
+
 
         foreach (GameObject child in boxes)
         {

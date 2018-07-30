@@ -15,4 +15,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void AddIncome(float amount)
+    {
+        //   Debug.Log("incomed added to: " + this.name);
+        Money += amount;
+    }
 }

@@ -4,17 +4,67 @@ using UnityEngine;
 
 public class RecieverController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    PlayerController player;
+
+    public List<GameObject> BoxesToImport = new List<GameObject>();
+
+    public List<GameObject> RecievingTiles;
+
+    public float IncomeHeld = 0;
+    public float transferRate = 2.5f;
+
+    // Use this for initialization
+    void Start () {
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+
+
+        UpdateBTI();
+
+
+
+    }
     public void Timedpdate()
     {
 
+        if (IncomeHeld > transferRate)
+        {
+            //if held is more than transfer rate
+
+            player.AddIncome(transferRate);
+            IncomeHeld -= transferRate;
+
+        }
+        else
+        {
+            //if held isnt more than rate
+
+            player.AddIncome(IncomeHeld);
+            IncomeHeld -= IncomeHeld;
+        }
+
+
+    }
+    private void UpdateBTI()
+    {
+        BoxesToImport.Clear();
+        foreach(GameObject Tile in RecievingTiles)
+        {
+
+            if(Tile.GetComponent<BoardSpaceController>().CurrentBox != null)
+            {
+
+                BoxesToImport.Add(Tile.GetComponent<BoardSpaceController>().CurrentBox);
+
+
+
+
+            }
+
+        }
     }
 }

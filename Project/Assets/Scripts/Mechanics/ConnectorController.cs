@@ -6,12 +6,21 @@ public class ConnectorController : MonoBehaviour {
 
     public GameObject SpaceTaken;
 
+    public List<GameObject> BoxesToExport = new List<GameObject>();
+    public List<GameObject> BoxesToImport = new List<GameObject>();
 
-  //  private List<GameObject> recieveList = new List<GameObject>();
+    //  private List<GameObject> recieveList = new List<GameObject>();
     private List<GameObject> sendList = new List<GameObject>();
 
-	// Use this for initialization
-	void Start () {
+    //box values//
+    [SerializeField]
+    public float IncomeHeld = 0f;
+    public float transferRate = 15f;
+
+    //box values//
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
