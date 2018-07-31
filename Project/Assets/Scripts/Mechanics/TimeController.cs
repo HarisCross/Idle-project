@@ -83,7 +83,9 @@ public class TimeController : MonoBehaviour {
         foreach(GameObject side in ConnectorList)
         {
 
-            side.GetComponent<ConnectorController>().UpdateAbjObjOnSides();
+            //side.GetComponent<ConnectorController>().UpdateAbjObjOnSides();
+
+
         }
     }
     void TimeIncrementer()

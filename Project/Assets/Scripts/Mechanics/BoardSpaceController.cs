@@ -14,6 +14,10 @@ public class BoardSpaceController : MonoBehaviour {
     public List<GameObject> PossibleSides;
     public List<GameObject> PossibleSideOpenSpots;
 
+
+    public bool openSpace = true;
+    public int SpaceCost = 50;
+
 	// Use this for initialization
 	void Start () {
 		

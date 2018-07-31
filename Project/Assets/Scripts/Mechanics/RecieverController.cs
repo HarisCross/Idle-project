@@ -12,6 +12,9 @@ public class RecieverController : MonoBehaviour {
 
     public float IncomeHeld = 0;
     public float transferRate = 2.5f;
+    public float MaxLimit = 1000f;
+
+
 
     // Use this for initialization
     void Start () {
@@ -25,6 +28,10 @@ public class RecieverController : MonoBehaviour {
 
         UpdateBTI();
 
+        if(IncomeHeld > MaxLimit)
+        {
+            IncomeHeld = MaxLimit;
+        }
 
 
     }

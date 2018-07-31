@@ -26,10 +26,10 @@ public class BoxController : MonoBehaviour {
     GameObject closest;
 
     //box values//
-    [SerializeField]
-    private float IncomeHeld = 0f;
+   
+    public float IncomeHeld = 0f;
     public float transferRate = 15f;
-
+    public float MaxLimit = 1500f;
     //box values//
 
     private void Awake()
@@ -72,13 +72,13 @@ public class BoxController : MonoBehaviour {
 
         if (box.GetComponent<BoxController>() != null)
         {
-            Debug.Log("transferred to box");
+        //    Debug.Log("transferred to box");
 
             foreach (GameObject pot in box.GetComponent<BoxController>().BoxesToImport)
             {
                 if (pot.gameObject == this.gameObject)
                 {
-                    Debug.Log("can trasnfer: pass");
+                  //  Debug.Log("can trasnfer: pass");
                     ret = true;
 
                 }
@@ -92,13 +92,13 @@ public class BoxController : MonoBehaviour {
 
         if(box.GetComponent<ConnectorController>() != null)
         {
-            Debug.Log("transferred to connectror");
+          //  Debug.Log("transferred to connectror");
 
             foreach (GameObject pot in box.GetComponent<ConnectorController>().BoxesToImport)
             {
                 if (pot.gameObject == this.gameObject)
                 {
-                    Debug.Log("can trasnfer: pass");
+                //    Debug.Log("can trasnfer: pass");
                     ret = true;
 
                 }
@@ -117,7 +117,7 @@ public class BoxController : MonoBehaviour {
 
         if(box.GetComponent<RecieverController>() != null)
         {
-            Debug.Log("transferred to rec");
+         //   Debug.Log("transferred to rec");
 
 
             foreach (GameObject pot in box.GetComponent<RecieverController>().BoxesToImport)
@@ -125,7 +125,7 @@ public class BoxController : MonoBehaviour {
                 Debug.Log(pot.name + this.name);
                 if (pot.gameObject == this.gameObject)
                 {
-                    Debug.Log("can trasnfer: pass");
+                 //   Debug.Log("can trasnfer: pass");
                     ret = true;
 
                 }
@@ -196,7 +196,7 @@ public class BoxController : MonoBehaviour {
 
 
 
-                Debug.Log("TRansfered money");
+              //  Debug.Log("TRansfered money");
 
 
                 IncomeHeld -= transferRate;
@@ -239,8 +239,8 @@ public class BoxController : MonoBehaviour {
 
 
 
-
-                Debug.Log("TRansfered money");
+//
+               // Debug.Log("TRansfered money");
 
 
                 IncomeHeld -= IncomeHeld;
@@ -277,7 +277,11 @@ public class BoxController : MonoBehaviour {
             UpdateAbjObjOnSides();
         }
 
-	}
+        if (IncomeHeld > MaxLimit)
+        {
+            IncomeHeld = MaxLimit;
+        }
+    }
     public void UpdateAbjObjOnSides()//called when change oocurs to map to update adj objects
     {
 
@@ -384,23 +388,25 @@ public class BoxController : MonoBehaviour {
 
 
         //use bsc - connector, 2 or 1, tile. update whenever it changes
-
+      //  Debug.Log("export count: " + ExportSides.Count);
         foreach(GameObject side in ExportSides)
         {
-            //Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+
             if (side.GetComponent<BoxSideController>().inpExpSide != null)
-            BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
-
-
+            {
+              //  Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+                BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+            }
+           
         }
 
 
         foreach (GameObject side in AcceptingSides)
         {
-           // Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
-            if (side.GetComponent<BoxSideController>().inpExpSide != null)
-                BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
-
+            // Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+            if (side.GetComponent<BoxSideController>().inpExpSide != null) { 
+            BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+        }
 
         }
 

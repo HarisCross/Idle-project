@@ -264,6 +264,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &110218479
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -790,6 +792,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &200373470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1662,6 +1666,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &376763179
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1768,6 +1774,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 324890863}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &379900769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1902,6 +1910,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &388697869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2197,6 +2207,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &437582030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2517,6 +2529,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &448987367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3249,6 +3263,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &534070963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3542,6 +3558,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &618111070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5679,6 +5697,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1088293046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6206,6 +6226,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1180839516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6640,6 +6662,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1209566597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6974,6 +6998,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1281794091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7876,6 +7902,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1519049944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8038,6 +8066,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1547082213
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8429,6 +8459,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1587449029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8785,6 +8817,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1718739527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9121,6 +9155,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1800122730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9256,6 +9292,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1815648539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9639,6 +9677,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1849006634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10020,6 +10060,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1918009032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10565,6 +10607,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1979185498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10671,6 +10715,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &1999704952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10855,6 +10901,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &2042941981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10961,6 +11009,8 @@ MonoBehaviour:
   CurrentBox: {fileID: 0}
   PossibleSides: []
   PossibleSideOpenSpots: []
+  openSpace: 1
+  SpaceCost: 50
 --- !u!65 &2046106614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11285,7 +11335,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2088816691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.99, y: 3, z: 17.67}
+  m_LocalPosition: {x: 27.5, y: 3, z: 21.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1225491419}
