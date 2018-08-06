@@ -98,6 +98,8 @@ public class BoxSideController : MonoBehaviour {
     {
         if (connectorStatus != 0)
         {
+
+            if (transform.childCount < 2) return;
             Material mat = transform.GetChild(2).transform.GetChild(0).transform.GetComponent<MeshRenderer>().material;
 
 

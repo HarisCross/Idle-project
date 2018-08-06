@@ -303,34 +303,37 @@ public class BoxController : MonoBehaviour {
     {
         ExportSides.Clear();
         AcceptingSides.Clear();
-        foreach(GameObject connector in ImpExpSides)
+        foreach (GameObject connector in ImpExpSides)
         {
-            
-            switch (connector.GetComponent<BoxSideController>().connectorStatus)
-            {
 
-                case 0:
-                    //not connector
-                    Debug.Log("somehow connector hasnt been assigned as a connector");
-                    break;
-                case 1:
-                    //exp side
-                    ExportSides.Add(connector);
+            //if (connector.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+            //{
 
-                    break;
-                case 2:
-                    //inp side
-                    AcceptingSides.Add(connector);
+                switch (connector.GetComponent<BoxSideController>().connectorStatus)
+                {
 
-                    break;
-                default:
+                    case 0:
+                        //not connector
+                        Debug.Log("somehow connector hasnt been assigned as a connector");
+                        break;
+                    case 1:
+                        //exp side
+                        ExportSides.Add(connector);
 
-                    break;
+                        break;
+                    case 2:
+                        //inp side
+                        AcceptingSides.Add(connector);
 
+                        break;
+                    default:
+
+                        break;
+
+                }
+                UpdateConnObj();
             }
-            UpdateConnObj();
-        }
-
+       // }
 
 
     }
@@ -394,19 +397,33 @@ public class BoxController : MonoBehaviour {
 
             if (side.GetComponent<BoxSideController>().inpExpSide != null)
             {
-              //  Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
-                BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                //  Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+                if (side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+                {
+                    BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                }
+                else
+                {
+                    Debug.Log("space doesnt have a box");
+                }
             }
-           
+
         }
 
 
         foreach (GameObject side in AcceptingSides)
         {
             // Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
-            if (side.GetComponent<BoxSideController>().inpExpSide != null) { 
-            BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
-        }
+            if (side.GetComponent<BoxSideController>().inpExpSide != null) {
+                if (side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+                {
+                    BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                }
+                else
+                {
+                    Debug.Log("space doesnt have a box");
+                }
+            }
 
         }
 

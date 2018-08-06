@@ -12,6 +12,8 @@ public class BoardController : MonoBehaviour
     public List<GameObject> PossibleBuildingOpenSpots; // do at soem point
     public GameObject[] BoardSpaces ;
 
+    private UIInteraction UIInteraction;
+
     public bool DisplayAvail = false;
 
     // Use this for initialization
@@ -22,8 +24,9 @@ public class BoardController : MonoBehaviour
         UpdateBoardSpaceControllerSidesList();
 
         BoardSpaces = GameObject.FindGameObjectsWithTag("BoardSpace");
+        UIInteraction = GameObject.Find("UI").GetComponent<UIInteraction>();
 
-       
+
 
     }
     // Update is called once per frame
@@ -31,11 +34,15 @@ public class BoardController : MonoBehaviour
     {
 
     }
-    public void DisplayFreeBoxSpaces()
+    public void DisplayFreeBoxSpacesBox()
     {
        // Debug.Log("Check");
         DisplayAvail = !DisplayAvail;
-        foreach(GameObject space in BoardSpaces)
+
+
+        UIInteraction.BoxOrConn = true;
+
+        foreach (GameObject space in BoardSpaces)
         {
             space.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             if (space.GetComponent<BoardSpaceController>().TakeByS == false)
@@ -43,6 +50,29 @@ public class BoardController : MonoBehaviour
                 if (space.GetComponent<BoardSpaceController>().TakenByB == false)
                 {
                   //  Debug.Log("Value Changed");
+                    space.gameObject.transform.GetChild(0).gameObject.SetActive(DisplayAvail);
+                }
+
+            }
+
+        }
+
+    }
+    public void DisplayFreeBoxSpacesConn()
+    {
+        // Debug.Log("Check");
+        DisplayAvail = !DisplayAvail;
+
+        UIInteraction.BoxOrConn = false;
+
+        foreach (GameObject space in BoardSpaces)
+        {
+            space.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            if (space.GetComponent<BoardSpaceController>().TakeByS == false)
+            {
+                if (space.GetComponent<BoardSpaceController>().TakenByB == false)
+                {
+                    //  Debug.Log("Value Changed");
                     space.gameObject.transform.GetChild(0).gameObject.SetActive(DisplayAvail);
                 }
 

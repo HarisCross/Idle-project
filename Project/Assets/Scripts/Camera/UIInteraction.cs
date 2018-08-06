@@ -23,6 +23,8 @@ public class UIInteraction : MonoBehaviour {
     private Vector3 tPos;
     public GameObject tempGO ;
 
+    public bool BoxOrConn = true; // true for box, false for conn
+
     private Text ErrorText;
     private Ray ray;
     private RaycastHit hit;
@@ -156,38 +158,47 @@ public class UIInteraction : MonoBehaviour {
             {
                 case "BoardSpace":
 
-                    if (boardController.DisplayAvail == true)
+                    if (BoxOrConn == true)
                     {
-                        if (hit.transform.GetComponent<BoardSpaceController>().TakenByB == false & hit.transform.GetComponent<BoardSpaceController>().TakeByS == false)
+                        if (boardController.DisplayAvail == true)
                         {
-                            if (tempGO != null)
+                            if (hit.transform.GetComponent<BoardSpaceController>().TakenByB == false & hit.transform.GetComponent<BoardSpaceController>().TakeByS == false)
                             {
-
-                                if (tempGO.transform.gameObject.name != hit.transform.gameObject.name)
+                                if (tempGO != null)
                                 {
-                                    Object.Destroy(tempGO);
-                                    tempGO = null;
+
+                                    if (tempGO.transform.gameObject.name != hit.transform.gameObject.name)
+                                    {
+                                        Object.Destroy(tempGO);
+                                        tempGO = null;
+
+                                    }
+                                }
+                                else
+                                {
 
                                 }
+                                tempGO = Instantiate(Resources.Load("TempBox", typeof(GameObject))) as GameObject;
+                                tempGO.transform.position = hit.transform.GetChild(1).gameObject.transform.position;
                             }
-                            else
+
+                            if (Input.GetMouseButtonDown(0))
                             {
 
+                                SpawnBox(hit);
                             }
-                            tempGO = Instantiate(Resources.Load("TempBox", typeof(GameObject))) as GameObject;
-                            tempGO.transform.position = hit.transform.GetChild(1).gameObject.transform.position;
+
+
+
+
                         }
+                    }
+                    else
+                    {
+                        //spawn temp conn
 
-                        if (Input.GetMouseButtonDown(0)){
-
-                            SpawnBox(hit);
-                        }
-
-
-                         
 
                     }
-
 
                     break;
                 default:
@@ -211,7 +222,7 @@ public class UIInteraction : MonoBehaviour {
         {
             player.Money -= 50f;
 
-            boardController.DisplayFreeBoxSpaces();
+            boardController.DisplayFreeBoxSpacesBox();
 
             Object.Destroy(tempGO);
             GameObject Box;
@@ -244,7 +255,28 @@ public class UIInteraction : MonoBehaviour {
 
 
     }
-   
+    private void SpawnConnector(int price)
+    {
+
+        if(player.Money > price)
+        {
+            player.Money -= price;
+
+
+
+
+
+
+        }
+        else
+        {
+            //not enough money
+            ErrorText.text = "UI - Not enough money";
+
+        }
+
+
+    }
     public void SideListDisplay()
     {
         //show side option list - move to bottom of heirarchy
@@ -469,4 +501,7 @@ public class UIInteraction : MonoBehaviour {
         }
        // sideController.MainBox.GetComponent<BoxController>().UpdateLists();
     }
+   
+
+
 }

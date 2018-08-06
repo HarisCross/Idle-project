@@ -7,6 +7,11 @@ public class ConnectorController : MonoBehaviour {
     public GameObject SpaceTaken;
     private GameObject closest;
 
+    public List<GameObject> ConnectorSides;
+
+    public List<GameObject> AdjSides;//sides next to this box
+    public List<GameObject> AdjObjOnSides;
+
     public List<GameObject> BoxesToExport = new List<GameObject>();
     public List<GameObject> BoxesToImport = new List<GameObject>();
 
@@ -27,8 +32,16 @@ public class ConnectorController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+
+        if (AdjSides.Count == 0)
+        {
+            AdjSides.AddRange(SpaceTaken.GetComponent<BoardSpaceController>().PossibleSides);
+            UpdateAbjObjOnSides();
+        }
+
+
+    }
     public void Timedpdate()
     {
       
@@ -108,7 +121,23 @@ public class ConnectorController : MonoBehaviour {
         }
 
     }
+    public void UpdateAbjObjOnSides()//called when change oocurs to map to update adj objects
+    {
 
+        foreach (GameObject side in AdjSides)
+        {
+
+            if (side.GetComponent<BoardSpaceController>().CurrentBox != null)
+            {
+                AdjObjOnSides.Add(side);
+            }
+
+
+        }
+
+
+
+    }     
     private void MoneyTransferExport()
     {
 
