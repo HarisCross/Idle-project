@@ -9,6 +9,7 @@ TagManager:
   - BoxReciever
   - BoardSpace
   - BoxConnector
+  - ConnTop
   layers:
   - Default
   - TransparentFX

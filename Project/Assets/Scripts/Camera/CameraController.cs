@@ -215,14 +215,17 @@ public class CameraController : MonoBehaviour {
             
         if(Physics.Raycast(ray.origin, ray.direction,out hit, 50))
         {
-            if (hit.transform.tag == "BoxSide" & CameraLocked == false)
+            if (hit.transform.tag == "BoxSide" | hit.transform.tag == "ConnTop")
             {
-                oldPos = transform.position;
-                targetPos = hit.transform;
-                
-                SetTargetPosition(hit.transform.GetChild(1).transform.position,hit.transform.parent.transform.parent.gameObject,hit.transform.gameObject);
+                if (CameraLocked == false)
+                {
+                    oldPos = transform.position;
+                    targetPos = hit.transform;
 
-                //this.GetComponent<UIInteraction>().UIBoxSideInteraction(true);
+                    SetTargetPosition(hit.transform.GetChild(1).transform.position, hit.transform.parent.transform.parent.gameObject, hit.transform.gameObject);
+
+                    //this.GetComponent<UIInteraction>().UIBoxSideInteraction(true);
+                }
             }
         }
     }

@@ -74,6 +74,7 @@ public class UIInteraction : MonoBehaviour {
         {
             DeleteSideButton.SetActive(true);
             //  Debug.Log(side.gameObject.name);
+
             if (boxSideFocused.GetComponent<BoxSideController>().side == "Connector")
             {
                 ConnSwapButton.SetActive(true);
@@ -196,7 +197,38 @@ public class UIInteraction : MonoBehaviour {
                     else
                     {
                         //spawn temp conn
+                        if (boardController.DisplayAvail == true)
+                        {
+                            if (hit.transform.GetComponent<BoardSpaceController>().TakenByB == false & hit.transform.GetComponent<BoardSpaceController>().TakeByS == false)
+                            {
+                                if (tempGO != null)
+                                {
 
+                                    if (tempGO.transform.gameObject.name != hit.transform.gameObject.name)
+                                    {
+                                        Object.Destroy(tempGO);
+                                        tempGO = null;
+
+                                    }
+                                }
+                                else
+                                {
+
+                                }
+                                tempGO = Instantiate(Resources.Load("TempConn", typeof(GameObject))) as GameObject;
+                                tempGO.transform.position = hit.transform.GetChild(1).gameObject.transform.position;
+                            }
+
+                            if (Input.GetMouseButtonDown(0))
+                            {
+
+                                SpawnConnector(hit);
+                            }
+
+
+
+
+                        }
 
                     }
 
@@ -255,15 +287,34 @@ public class UIInteraction : MonoBehaviour {
 
 
     }
-    private void SpawnConnector(int price)
+    private void SpawnConnector(RaycastHit hitInfo)
     {
-
+        int price = 100;
         if(player.Money > price)
         {
             player.Money -= price;
 
+            boardController.DisplayFreeBoxSpacesBox();
 
+            Object.Destroy(tempGO);
+            GameObject Box;
 
+            Box = Instantiate(Resources.Load("Connector", typeof(GameObject))) as GameObject;
+            Box.transform.position = hitInfo.transform.GetChild(1).gameObject.transform.position;
+
+            // Debug.Log(Box.gameObject.name + Box.transform.position);
+
+            hit.transform.gameObject.GetComponent<BoardSpaceController>().CurrentBox = Box;
+            hit.transform.gameObject.GetComponent<BoardSpaceController>().TakenByB = true;
+            Box.transform.parent = GameObject.Find("ConnHolder").transform;
+
+            player.gameObject.GetComponent<CameraController>().PauseCamera(0.5f);
+
+            ErrorText.text = "";
+
+            timeController.UpdateAddList(Box);
+
+            Box.GetComponent<ConnectorController>().SpaceTaken = hit.transform.gameObject;
 
 
 

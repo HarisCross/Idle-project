@@ -7,6 +7,7 @@ public class ConnectorController : MonoBehaviour {
     public GameObject SpaceTaken;
     private GameObject closest;
 
+
     public List<GameObject> ConnectorSides;
 
     public List<GameObject> AdjSides;//sides next to this box
