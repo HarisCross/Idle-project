@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     private int screenWidth, screenHeight,movementSpeed = 5;
     public int edgeBoundary = 50;
     public float CameraHeight = 3f;
-
+    private GameObject player;
     float timeTaken = 3f, currTime;
     Vector3 startPos,tPos,oldPos;
     List<GameObject> boxes = new List<GameObject>();
@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour {
     private void Awake()
     {
         uiInteraction = GameObject.Find("UI").GetComponent<UIInteraction>();
-
+        player = GameObject.Find("Player");
 
         Cursor.lockState = CursorLockMode.Confined;
 
@@ -67,7 +67,19 @@ public class CameraController : MonoBehaviour {
                 transform.position = Vector3.Lerp(startPos, tPos, currTime);
                 if (targetPos != null)
                 {
-                    transform.LookAt(targetPos.GetComponentInParent<BoxCollider>().transform);
+                    Debug.Log("looking at" + targetPos.name);
+                    if (targetPos.GetComponentInParent<BoxCollider>() != null)
+                    {
+                        transform.LookAt(targetPos.GetComponentInParent<BoxCollider>().transform);
+                    }
+                    else
+                    {
+                        transform.LookAt(targetPos);
+                    }
+                }
+                else
+                {
+                    Debug.Log("target pos is empty");
                 }
                 if (Vector3.Distance(transform.position, tPos) < 0.1f)
                 {
@@ -115,6 +127,39 @@ public class CameraController : MonoBehaviour {
         {
             RotateCamera();
         }
+    }
+    public void ConnectorTopFocused(GameObject Connector)
+    {
+        GameObject cameraPoint = Connector.transform.GetChild(1).GetChild(1).gameObject;
+        targetPos = Connector.transform;
+       // Debug.Log(cameraPoint.name);
+
+        SetTargetPosition(cameraPoint.transform.position, Connector, Connector.transform.GetChild(1).gameObject);
+
+    }
+    private void ResetRotationForConnector()
+    {
+        //change rotate to have ui line up with connector below
+        int countbreak = 0;
+        do
+        {
+            if(player.transform.rotation.y < 0)
+            {
+                //less than 0 - inc rot
+
+
+            }
+            else
+            {
+                //more than 0 - dec rot
+
+
+            }
+
+            countbreak++;
+        } while (player.transform.rotation.y != 0| countbreak == 100);
+
+
     }
     public void SetTargetPosition(Vector3 pos,GameObject focus,GameObject side)//moves camera to preset position relative to the item selected
     {
@@ -220,7 +265,16 @@ public class CameraController : MonoBehaviour {
                 if (CameraLocked == false)
                 {
                     oldPos = transform.position;
-                    targetPos = hit.transform;
+                    Debug.Log(hit.transform.gameObject.name);
+                    if(hit.transform.tag == "ConnTop")
+                    {
+                        targetPos = hit.transform.parent.transform;
+                    }
+                    else
+                    {
+                        targetPos = hit.transform;
+                    }
+                   // targetPos = hit.transform;
 
                     SetTargetPosition(hit.transform.GetChild(1).transform.position, hit.transform.parent.transform.parent.gameObject, hit.transform.gameObject);
 

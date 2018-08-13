@@ -316,7 +316,7 @@ public class UIInteraction : MonoBehaviour {
 
             Box.GetComponent<ConnectorController>().SpaceTaken = hit.transform.gameObject;
 
-
+            camController.ConnectorTopFocused(Box);
 
         }
         else
