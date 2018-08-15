@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour {
     public float RotSpeed = 3;
 
     float yaw = 0f, pitch = 0f;
-
+    Quaternion rot;
     private Ray ray;
     private RaycastHit hit;
 
@@ -54,6 +54,7 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //Debug.Log("oldpos: " + oldPos);
         if (paused == false)
         {
 
@@ -67,7 +68,7 @@ public class CameraController : MonoBehaviour {
                 transform.position = Vector3.Lerp(startPos, tPos, currTime);
                 if (targetPos != null)
                 {
-                    Debug.Log("looking at" + targetPos.name);
+                   // Debug.Log("looking at" + targetPos.name);
                     if (targetPos.GetComponentInParent<BoxCollider>() != null)
                     {
                         transform.LookAt(targetPos.GetComponentInParent<BoxCollider>().transform);
@@ -75,6 +76,7 @@ public class CameraController : MonoBehaviour {
                     else
                     {
                         transform.LookAt(targetPos);
+
                     }
                 }
                 else
@@ -83,7 +85,7 @@ public class CameraController : MonoBehaviour {
                 }
                 if (Vector3.Distance(transform.position, tPos) < 0.1f)
                 {
-
+                    //reached target location
                     moving = false;
                 }
 
@@ -92,6 +94,7 @@ public class CameraController : MonoBehaviour {
         }
 
     }
+
     public void MoveBack()
     {
         MoveBackToOldPosition(oldPos);
@@ -132,37 +135,17 @@ public class CameraController : MonoBehaviour {
     {
         GameObject cameraPoint = Connector.transform.GetChild(1).GetChild(1).gameObject;
         targetPos = Connector.transform;
-       // Debug.Log(cameraPoint.name);
 
+
+        
         SetTargetPosition(cameraPoint.transform.position, Connector, Connector.transform.GetChild(1).gameObject);
 
     }
-    private void ResetRotationForConnector()
-    {
-        //change rotate to have ui line up with connector below
-        int countbreak = 0;
-        do
-        {
-            if(player.transform.rotation.y < 0)
-            {
-                //less than 0 - inc rot
 
-
-            }
-            else
-            {
-                //more than 0 - dec rot
-
-
-            }
-
-            countbreak++;
-        } while (player.transform.rotation.y != 0| countbreak == 100);
-
-
-    }
     public void SetTargetPosition(Vector3 pos,GameObject focus,GameObject side)//moves camera to preset position relative to the item selected
     {
+
+        oldPos = transform.position;
 
         currTime = 0;
         startPos = transform.position;
@@ -264,8 +247,8 @@ public class CameraController : MonoBehaviour {
             {
                 if (CameraLocked == false)
                 {
-                    oldPos = transform.position;
-                    Debug.Log(hit.transform.gameObject.name);
+
+
                     if(hit.transform.tag == "ConnTop")
                     {
                         targetPos = hit.transform.parent.transform;

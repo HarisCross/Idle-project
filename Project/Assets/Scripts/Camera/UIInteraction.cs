@@ -14,6 +14,7 @@ public class UIInteraction : MonoBehaviour {
     public GameObject DeleteSideButton;
     public GameObject DeleteBoxButton;
     public GameObject ConnSwapButton;
+    public GameObject ConnButtons;
     public Text ConnStatusText;
 
     public bool menuDisplayed = false, moveMenu = false;
@@ -64,7 +65,24 @@ public class UIInteraction : MonoBehaviour {
     }
     private void ButtonUpdate()
     {
+        if(boxSideFocused != null)
+        {
+            if (boxSideFocused.tag == "ConnTop")
+            {
+                //Debug.Log("looking at connector top");
 
+                ConnButtons.GetComponent<ConnButtonController>().Active = true;
+
+
+            }
+
+        }
+        else
+        {
+
+            ConnButtons.GetComponent<ConnButtonController>().Active = false;
+
+        }
 
 
         //if looking at box then show box delete
@@ -132,6 +150,7 @@ public class UIInteraction : MonoBehaviour {
             DeleteBoxButton.SetActive(false);
 
         }
+
 
 
     }
