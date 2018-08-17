@@ -6,8 +6,18 @@ using UnityEngine.UI;
 public class ConnButtonController : MonoBehaviour {
 
     public bool Active = false;
-
+    public bool ButtonsActive = false;
     public List<GameObject> ConnButtons = new List<GameObject>();
+
+    public GameObject ConnTarget;
+    public List<GameObject> ConnSides = new List<GameObject>();
+
+
+    //conn values//
+    private float SideCost = 50f;
+
+
+    //conn values//
 
 	// Use this for initialization
 	void Start () {
@@ -16,61 +26,176 @@ public class ConnButtonController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-    public void TestClick()
-    {
-        Debug.Log("test button");
-    }
 
-    //FILL AMOUNT,CHILD - TEXT, BUTTON-INTERACTABLE
-    public void TESTActivate()
-    {
-        ActivateButtons();
-
-    }
-    public void TESTDeactivate()
-    {
-
-
-    }
-    public void ActivateButtons()
-    {
-
-        foreach(GameObject butt in ConnButtons)
+        if (ConnTarget != null)
         {
-            Debug.Log("doing: "+butt.name);
+            //add its sides to list
+            if (ConnSides.Count == 0) { 
+                ConnSides.AddRange(ConnTarget.GetComponent<ConnectorController>().ConnectorSides);
 
-            butt.GetComponent<Button>().interactable = true;
-            butt.transform.GetChild(0).transform.gameObject.SetActive(true);
+            }
+            //      ActivateButtons();
+         
+        }
+        else
+        {
+            //clear the liust
 
-            StartCoroutine(FillButton(butt));
+            ConnSides.Clear();
+          //      DeactivateButtons();
+        }
+        if (Active == false)
+        {
+            ConnTarget = null;
+            ConnSides.Clear();
+        }
+
+        if (Active) MoveUI();
+    }
+    private void MoveUI()
+    {
+        //for each side get button and have hover over side pos
+
+        int count = 0;
+
+        foreach(GameObject side in ConnSides)
+        {
+
+            Vector3 sidePos = Camera.main.WorldToScreenPoint(side.transform.position);
+
+            ConnButtons[count].transform.position = sidePos;
 
 
 
+            if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == false)
+            {
+                ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
+                // button.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
+
+                ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
+
+
+                side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
+            }
+            count++;
         }
 
 
     }
-
-    private IEnumerator FillButton(GameObject button)
+    public void testFunc()
     {
-        float timer = 2f;
+        Debug.Log(this.name);
+    }
+    public void ActivateButtons()
+    {
+        // Debug.Log("activate buttons");
+       // int count = 0;
+        foreach (GameObject butt in ConnButtons)
+        {
+            //Debug.Log("doing: "+butt.name);
+            StartCoroutine(FillButton(butt,true));
 
-        do
+
+        }
+
+        int count = 0;
+
+        foreach (GameObject side in ConnSides)
         {
 
-            //button.GetComponent<Image>().fillAmount += 0.01f;
+            if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == false)
+            {
+                ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
+                ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
 
 
-            button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
-            yield return new WaitForSecondsRealtime(0.01f);
+                side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
+            }
+            count++;
+        }
+    }
+    public void DeactivateButtons()
+    {
+        //Debug.Log("deactivate buttons");
+        foreach(GameObject butt in ConnButtons)
+        {
+           // Debug.Log("doing: "+butt.name);
+            StartCoroutine(FillButton(butt,false));
+        }
+        int count = 0;
 
-        } while (button.GetComponent<Image>().fillAmount < 1);
+        foreach (GameObject side in ConnSides)
+        {
 
+            if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == true)
+            {
+                //   ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
+                //   ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
+
+                ConnButtons[count].gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+
+                side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = false;
+            }
+            count++;
+        }
+
+    }
+
+    private IEnumerator FillButton(GameObject button,bool var)
+    {
+        float timer = 1f;
+        if (var)
+        {
+            do
+            {
+
+               // button.GetComponent<Image>().fillAmount += 0.01f;
+
+
+                button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+                yield return new WaitForSecondsRealtime(0.01f);
+              //  Debug.Log("filling");
+
+            } while (button.GetComponent<Image>().fillAmount <0.95f);
+
+
+
+           // Debug.Log("stopped filling");
+            button.GetComponent<Image>().fillAmount = 1f;
+            button.GetComponent<Button>().interactable = true;
+            button.transform.GetChild(0).transform.gameObject.SetActive(true);
+
+
+
+
+        }
+        else
+        {
+            button.GetComponent<Button>().interactable = false;
+            button.transform.GetChild(0).transform.gameObject.SetActive(false);
+            do
+            {
+
+                button.GetComponent<Image>().fillAmount -= timer * Time.deltaTime;
+                yield return new WaitForSecondsRealtime(0.01f);
+
+            } while (button.GetComponent<Image>().fillAmount >0);
+
+
+
+
+
+        }
         yield return null;
     }
 
+    public void Modify()
+    {
+        //allow purchase, upgrade to lv 3
 
+
+
+
+    }
 
 }

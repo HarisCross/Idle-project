@@ -71,9 +71,24 @@ public class UIInteraction : MonoBehaviour {
             {
                 //Debug.Log("looking at connector top");
 
+
+
                 ConnButtons.GetComponent<ConnButtonController>().Active = true;
+                ConnButtons.GetComponent<ConnButtonController>().ConnTarget = boxSideFocused.transform.parent.transform.gameObject; //is giving conntop/ chagne to give connector itself
+                if(ConnButtons.GetComponent<ConnButtonController>().ButtonsActive == false)
+                {
+                    ConnButtons.GetComponent<ConnButtonController>().ActivateButtons();
+                    ConnButtons.GetComponent<ConnButtonController>().ButtonsActive = true;
+                }
+               
+            }
+            else
+            {
+                ConnButtons.GetComponent<ConnButtonController>().Active = false;
+                ConnButtons.GetComponent<ConnButtonController>().DeactivateButtons();
 
 
+                // ConnButtons.GetComponent<ConnButtonController>().ConnTarget = null; //is giving conntop/ chagne to give connector itself
             }
 
         }
@@ -82,6 +97,11 @@ public class UIInteraction : MonoBehaviour {
 
             ConnButtons.GetComponent<ConnButtonController>().Active = false;
 
+            if (ConnButtons.GetComponent<ConnButtonController>().ButtonsActive == true)
+            {
+                ConnButtons.GetComponent<ConnButtonController>().DeactivateButtons();
+                ConnButtons.GetComponent<ConnButtonController>().ButtonsActive = false;
+            }
         }
 
 
