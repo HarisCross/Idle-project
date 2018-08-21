@@ -22,7 +22,7 @@ public class ConnectorController : MonoBehaviour {
     //box values//
     [SerializeField]
     public float IncomeHeld = 0f;
-    public float transferRate = 15f;
+   // public float transferRate = 15f;
     public float MaxLimit = 350f;
     //box values//
 
@@ -47,81 +47,7 @@ public class ConnectorController : MonoBehaviour {
     {
       
     }
-    
-    public GameObject GetNearObjects(Transform pos, bool AddTile)
-    {
-        closest = null;
 
-        foreach (GameObject side in ExportSides)
-        {
-
-
-            if (closest == null)
-            {
-                closest = side;
-            }
-            else
-            {
-
-                if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
-                {
-                    closest = side;
-                }
-
-
-            }
-
-        }
-        foreach (GameObject side in AcceptingSides)
-        {
-
-
-            if (closest == null)
-            {
-                closest = side;
-            }
-            else
-            {
-
-                if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
-                {
-                    closest = side;
-                }
-
-
-            }
-
-        }
-
-        UpdateConnObj();
-        return closest;
-    }
-    public void UpdateConnObj()
-    {
-        BoxesToExport.Clear();
-        BoxesToImport.Clear();
-
-        foreach (GameObject side in ExportSides)
-        {
-
-            if (side.GetComponent<BoxSideController>().inpExpSide != null)
-            {
-                BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
-            }
-
-        }
-
-
-        foreach (GameObject side in AcceptingSides)
-        {
-            if (side.GetComponent<BoxSideController>().inpExpSide != null)
-            {
-                BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
-            }
-
-        }
-
-    }
     public void UpdateAbjObjOnSides()//called when change oocurs to map to update adj objects
     {
 
@@ -138,106 +64,7 @@ public class ConnectorController : MonoBehaviour {
 
 
 
-    }     
-    private void MoneyTransferExport()
-    {
-
-        IncomeHeld = Mathf.Round(IncomeHeld);
-        int count = BoxesToExport.Count;
-        float moneySplit;
-
-        foreach (GameObject box in BoxesToExport)
-        {
-            if (CanTransfer(box) == false)
-            {
-                //  Debug.Log("can trasnfer failed");
-                return;
-            }
-
-            if (IncomeHeld > transferRate)
-            {
-                //if held is more than transfer rate
-                // box.AddIncome(transferRate);
-
-
-                moneySplit = Mathf.Round((transferRate / count));
-
-
-                if (box.GetComponent<BoxController>() != null)
-                {
-
-                    box.GetComponent<BoxController>().IncomeHeld += moneySplit;
-
-
-                }
-
-                if (box.GetComponent<ConnectorController>() != null)
-                {
-
-                    box.GetComponent<ConnectorController>().IncomeHeld += moneySplit;
-
-
-                }
-
-
-                if (box.GetComponent<RecieverController>() != null)
-                {
-                    box.GetComponent<RecieverController>().IncomeHeld += moneySplit;
-
-
-                }
-
-                Debug.Log("TRansfered money");
-
-
-                IncomeHeld -= transferRate;
-            }
-            else
-            {
-                //if held isnt more than rate
-                //  box.AddIncome(IncomeHeld);
-
-                moneySplit = Mathf.Round(IncomeHeld / count);
-
-
-                if (box.GetComponent<BoxController>() != null)
-                {
-
-                    box.GetComponent<BoxController>().IncomeHeld += moneySplit;
-
-
-                }
-
-                if (box.GetComponent<ConnectorController>() != null)
-                {
-
-                    box.GetComponent<ConnectorController>().IncomeHeld += moneySplit;
-
-
-                }
-
-
-                if (box.GetComponent<RecieverController>() != null)
-                {
-                    box.GetComponent<RecieverController>().IncomeHeld += moneySplit;
-
-
-                }
-
-                Debug.Log("TRansfered money");
-
-                IncomeHeld -= IncomeHeld;
-            }
-
-        }
-
-
-
-
-
-
     }
-
     private bool CanTransfer(GameObject box)
     {
         bool ret = false;

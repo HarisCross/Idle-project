@@ -1406,7 +1406,6 @@ MonoBehaviour:
   ExportSides: []
   AcceptingSides: []
   IncomeHeld: 0
-  transferRate: 15
   MaxLimit: 350
 --- !u!114 &114256067722319406
 MonoBehaviour:
@@ -1420,6 +1419,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: Connector
+  CConn: {fileID: 0}
+  buttonAssigned: {fileID: 0}
+  sidePresent: 0
+  ButtonAdded: 0
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
+  upgradeLevel: 0
+  PurchaseCost: 50
+  UpgradeCost: 150
+  transferRate: 0
 --- !u!114 &114491951623564842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1432,6 +1441,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: Connector
+  CConn: {fileID: 0}
+  buttonAssigned: {fileID: 0}
+  sidePresent: 0
+  ButtonAdded: 0
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
+  upgradeLevel: 0
+  PurchaseCost: 50
+  UpgradeCost: 150
+  transferRate: 0
 --- !u!114 &114786422232489146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1444,6 +1463,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: Connector
+  CConn: {fileID: 0}
+  buttonAssigned: {fileID: 0}
+  sidePresent: 0
+  ButtonAdded: 0
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
+  upgradeLevel: 0
+  PurchaseCost: 50
+  UpgradeCost: 150
+  transferRate: 0
 --- !u!114 &114889517336247344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1456,6 +1485,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: Connector
+  CConn: {fileID: 0}
+  buttonAssigned: {fileID: 0}
+  sidePresent: 0
+  ButtonAdded: 0
+  connectorStatus: 0
+  inpExpSide: {fileID: 0}
+  upgradeLevel: 0
+  PurchaseCost: 50
+  UpgradeCost: 150
+  transferRate: 0
 --- !u!135 &135192176883762418
 SphereCollider:
   m_ObjectHideFlags: 1

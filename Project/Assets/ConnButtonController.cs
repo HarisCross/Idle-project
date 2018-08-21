@@ -14,7 +14,7 @@ public class ConnButtonController : MonoBehaviour {
 
 
     //conn values//
-    private float SideCost = 50f;
+    ///private float SideCost = 50f;
 
 
     //conn values//
@@ -51,7 +51,9 @@ public class ConnButtonController : MonoBehaviour {
         }
 
         if (Active) MoveUI();
+
     }
+
     private void MoveUI()
     {
         //for each side get button and have hover over side pos
@@ -73,7 +75,7 @@ public class ConnButtonController : MonoBehaviour {
                 // button.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
 
                 ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
-
+                side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().buttonAssigned = ConnButtons[count];
 
                 side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
             }
@@ -82,10 +84,10 @@ public class ConnButtonController : MonoBehaviour {
 
 
     }
-    public void testFunc()
-    {
-        Debug.Log(this.name);
-    }
+    //public void testFunc()
+    //{
+    //    Debug.Log(this.name);
+    //}
     public void ActivateButtons()
     {
         // Debug.Log("activate buttons");
@@ -100,19 +102,20 @@ public class ConnButtonController : MonoBehaviour {
 
         int count = 0;
 
-        foreach (GameObject side in ConnSides)
-        {
+        //foreach (GameObject side in ConnSides)
+        //{
 
-            if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == false)
-            {
-                ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
-                ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
+        //    if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == false)
+        //    {
+        //        ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
+        //        ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
 
-
-                side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
-            }
-            count++;
-        }
+        //        side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().buttonAssigned = ConnButtons[count];
+        //        Debug.Log("addigned");
+        //        side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
+        //    }
+        //    count++;
+        //}
     }
     public void DeactivateButtons()
     {
@@ -146,6 +149,7 @@ public class ConnButtonController : MonoBehaviour {
         float timer = 1f;
         if (var)
         {
+            yield return new WaitForSecondsRealtime(1f);
             do
             {
 
@@ -189,13 +193,5 @@ public class ConnButtonController : MonoBehaviour {
         yield return null;
     }
 
-    public void Modify()
-    {
-        //allow purchase, upgrade to lv 3
-
-
-
-
-    }
 
 }
