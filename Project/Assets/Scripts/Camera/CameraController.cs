@@ -137,14 +137,15 @@ public class CameraController : MonoBehaviour {
         targetPos = Connector.transform;
 
 
-        
+        //Debug.Log("connedt: " + Connector);
+
         SetTargetPosition(cameraPoint.transform.position, Connector, Connector.transform.GetChild(1).gameObject);
 
     }
 
     public void SetTargetPosition(Vector3 pos,GameObject focus,GameObject side)//moves camera to preset position relative to the item selected
     {
-
+        Debug.Log("focused: " + focus);
         oldPos = transform.position;
 
         currTime = 0;
@@ -184,6 +185,7 @@ public class CameraController : MonoBehaviour {
         //set all invis
         //change one selected to vis
 
+        //Debug.Log("focused: " + focus);
         boxes.AddRange(GameObject.FindGameObjectsWithTag("MainBox"));
         boxes.AddRange(GameObject.FindGameObjectsWithTag("BoxReciever"));
         boxes.AddRange(GameObject.FindGameObjectsWithTag("BoxConnector"));
@@ -196,6 +198,7 @@ public class CameraController : MonoBehaviour {
 
 
             if (focus != child) {
+
                 MeshRenderer[] meshes = child.GetComponentsInChildren<MeshRenderer>();
 
                 foreach (MeshRenderer mesh in meshes)
@@ -252,23 +255,21 @@ public class CameraController : MonoBehaviour {
                     if(hit.transform.tag == "ConnTop")
                     {
                         targetPos = hit.transform.parent.transform;
+                        SetTargetPosition(hit.transform.GetChild(1).transform.position, hit.transform.transform.parent.gameObject, hit.transform.gameObject);
+                        Debug.Log("hit conn top");
                     }
                     else
                     {
                         targetPos = hit.transform;
+                        SetTargetPosition(hit.transform.GetChild(1).transform.position, hit.transform.parent.transform.parent.gameObject, hit.transform.gameObject);
                     }
-                   // targetPos = hit.transform;
 
-                    SetTargetPosition(hit.transform.GetChild(1).transform.position, hit.transform.parent.transform.parent.gameObject, hit.transform.gameObject);
-
-                    //this.GetComponent<UIInteraction>().UIBoxSideInteraction(true);
                 }
             }
         }
     }
     void MoveCamera()
     {
-        //Debug.Log("moving camera");
 
         //corners
         if (Input.mousePosition.x > (screenWidth - edgeBoundary) & Input.mousePosition.y > (screenHeight - edgeBoundary))//forward/right

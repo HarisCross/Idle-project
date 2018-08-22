@@ -8,17 +8,19 @@ public class ConnectorSide : MonoBehaviour {
     public string side = "Connector";
     [SerializeField]
     private ConnectorController CConn;
+    private GameObject MainController;
     private PlayerController playerCon;
     public GameObject buttonAssigned;
     private GameObject thisSide;
     public bool sidePresent = false;
     public bool ButtonAdded = false;
+    public bool subButtonAdded = false;
 
     public int connectorStatus = 1;//0 for not, 1 for exp, 2 for inp
     public GameObject inpExpSide;
 
-    [SerializeField]
-    private int upgradeLevel = 0;
+ //   [SerializeField]
+    public int upgradeLevel = 0;
 
     //box side values//
     public float PurchaseCost = 50f;
@@ -32,17 +34,23 @@ public class ConnectorSide : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-    //    Debug.Log(transform.parent.gameObject.transform.parent.gameObject.name);
-        CConn = transform.parent.gameObject.transform.parent.gameObject.GetComponent<ConnectorController>();
+        //    Debug.Log(transform.parent.gameObject.transform.parent.gameObject.name);
+        MainController = transform.parent.gameObject.transform.parent.gameObject;
+        CConn = MainController.GetComponent<ConnectorController>();
         thisSide = transform.GetChild(0).gameObject;
         playerCon = GameObject.Find("Player").GetComponent<PlayerController>();
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         UpdateText();
-        SideConnectorCol();
 
+        if (inpExpSide == null)
+        {
+            inpExpSide = CConn.GetNearObjects(this.gameObject.transform, true);
+            CConn.UpdateConnObj();
+        }
 
     }
 
@@ -63,15 +71,11 @@ public class ConnectorSide : MonoBehaviour {
 
 
     }
+    
     void SideConnectorCol()
     {
-        //if (connectorStatus != 0)
-        //{
-
-            //  if (transform.childCount < 2) return;
-            //Material mat = transform.GetChild(2).transform.GetChild(0).transform.GetComponent<MeshRenderer>().material;
+        
             Material mat = transform.GetChild(0).GetChild(0).transform.GetComponent<MeshRenderer>().material;
-         //   Debug.Log(transform.GetChild(0).GetChild(0).transform.name);
             switch (connectorStatus)
             {
                 case 1:
@@ -87,9 +91,19 @@ public class ConnectorSide : MonoBehaviour {
                     break;
             }
 
-        //}
+        
     }
-    //}
+    public void SwapConnType()
+    {
+        //Debug.Log("swapped connect int");
+        switch (connectorStatus)
+        {
+
+            case 1: connectorStatus = 2;break;
+            case 2: connectorStatus = 1;break;
+        }
+        SideConnectorCol();
+    }
     public void ModifySide()
     {
         //allow: purchase, upgrade
@@ -106,6 +120,7 @@ public class ConnectorSide : MonoBehaviour {
                 thisSide.SetActive(true);
                 connectorStatus = 1;
 
+                SideConnectorCol();
             }
             else
             {

@@ -57,12 +57,12 @@ public class ConnButtonController : MonoBehaviour {
     private void MoveUI()
     {
         //for each side get button and have hover over side pos
-
+     //   Debug.Log("moveuio called");
         int count = 0;
 
         foreach(GameObject side in ConnSides)
         {
-
+            ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
             Vector3 sidePos = Camera.main.WorldToScreenPoint(side.transform.position);
 
             ConnButtons[count].transform.position = sidePos;
@@ -71,51 +71,46 @@ public class ConnButtonController : MonoBehaviour {
 
             if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == false)
             {
-                ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
+               // ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
                 // button.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
 
                 ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
                 side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().buttonAssigned = ConnButtons[count];
 
                 side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
+
+
+            }
+
+            if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().upgradeLevel > 0)
+            {
+               // Debug.Log("> 0");
+                if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().subButtonAdded == false)
+                {
+                    ConnButtons[count].transform.GetChild(1).transform.GetComponent<Button>().onClick.AddListener(CSide.SwapConnType);
+                    side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().subButtonAdded = true;
+                   // Debug.Log("listener added");
+
+                }
+
             }
             count++;
         }
 
 
     }
-    //public void testFunc()
-    //{
-    //    Debug.Log(this.name);
-    //}
+
     public void ActivateButtons()
     {
-        // Debug.Log("activate buttons");
-       // int count = 0;
+
         foreach (GameObject butt in ConnButtons)
         {
-            //Debug.Log("doing: "+butt.name);
+
             StartCoroutine(FillButton(butt,true));
 
 
         }
 
-        int count = 0;
-
-        //foreach (GameObject side in ConnSides)
-        //{
-
-        //    if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == false)
-        //    {
-        //        ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
-        //        ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
-
-        //        side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().buttonAssigned = ConnButtons[count];
-        //        Debug.Log("addigned");
-        //        side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
-        //    }
-        //    count++;
-        //}
     }
     public void DeactivateButtons()
     {
@@ -132,13 +127,20 @@ public class ConnButtonController : MonoBehaviour {
 
             if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded == true)
             {
-                //   ConnectorSide CSide = side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>();
-                //   ConnButtons[count].gameObject.GetComponent<Button>().onClick.AddListener(CSide.ModifySide);
 
                 ConnButtons[count].gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-
+                ConnButtons[count].transform.GetChild(1).transform.GetComponent<Button>().onClick.RemoveAllListeners();
                 side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = false;
             }
+
+
+            if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().subButtonAdded == true)
+            {
+                ConnButtons[count].transform.GetChild(1).transform.GetComponent<Button>().onClick.RemoveAllListeners();
+                side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().subButtonAdded = false;
+
+            }
+
             count++;
         }
 
@@ -157,6 +159,7 @@ public class ConnButtonController : MonoBehaviour {
 
 
                 button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+                
                 yield return new WaitForSecondsRealtime(0.01f);
               //  Debug.Log("filling");
 
@@ -170,8 +173,19 @@ public class ConnButtonController : MonoBehaviour {
             button.transform.GetChild(0).transform.gameObject.SetActive(true);
 
 
+           
+            timer = 1f;
+            do
+            {
+                // button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+                button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
 
+                yield return new WaitForSecondsRealtime(0.01f);
+            } while (button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount < 0.95f);
 
+            button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount = 1f;
+            button.transform.GetChild(1).transform.GetComponent<Button>().interactable = true;
+            button.transform.GetChild(1).transform.transform.GetChild(0).transform.gameObject.SetActive(true);
         }
         else
         {
@@ -184,8 +198,21 @@ public class ConnButtonController : MonoBehaviour {
                 yield return new WaitForSecondsRealtime(0.01f);
 
             } while (button.GetComponent<Image>().fillAmount >0);
+            button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount = 0f;
 
+            button.transform.GetChild(1).transform.GetComponent<Button>().interactable = false;
+            button.transform.GetChild(1).transform.transform.GetChild(0).transform.gameObject.SetActive(false);
 
+            timer = 1f;
+            do
+            {
+                // button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+                button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount -= timer * Time.deltaTime;
+
+                yield return new WaitForSecondsRealtime(0.01f);
+            } while (button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount >0);
+
+            button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount = 0f;
 
 
 

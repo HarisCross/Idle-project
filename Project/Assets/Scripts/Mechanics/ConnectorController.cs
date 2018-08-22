@@ -16,6 +16,11 @@ public class ConnectorController : MonoBehaviour {
     public List<GameObject> BoxesToExport = new List<GameObject>();
     public List<GameObject> BoxesToImport = new List<GameObject>();
 
+
+    public List<GameObject> ImpExpSides;//sides with a connector
+
+    public List<GameObject> SurroundingTiles;
+
     public List<GameObject> ExportSides;//to store the items to send money too
     public List<GameObject> AcceptingSides;//sides which this can accept from
 
@@ -147,7 +152,94 @@ public class ConnectorController : MonoBehaviour {
         return ret;
     }
 
+    public void UpdateConnObj()
+    {
+        BoxesToExport.Clear();
+        BoxesToImport.Clear();
 
 
+        //use bsc - connector, 2 or 1, tile. update whenever it changes
+        //  Debug.Log("export count: " + ExportSides.Count);
+        foreach (GameObject side in ExportSides)
+        {
+
+            if (side.GetComponent<BoxSideController>().inpExpSide != null)
+            {
+                //  Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+                if (side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+                {
+                    BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                }
+                else
+                {
+                    Debug.Log("space doesnt have a box");
+                }
+            }
+
+        }
+
+
+        foreach (GameObject side in AcceptingSides)
+        {
+            // Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
+            if (side.GetComponent<BoxSideController>().inpExpSide != null)
+            {
+                if (side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+                {
+                    BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                }
+                else
+                {
+                    Debug.Log("space doesnt have a box");
+                }
+            }
+
+        }
+
+
+
+
+
+
+    }
+    public GameObject GetNearObjects(Transform pos, bool AddTile)
+    {
+        closest = null;
+
+
+
+        foreach (GameObject side in AdjSides)
+        {
+
+
+            if (closest == null)
+            {
+                closest = side;
+            }
+            else
+            {
+                //float dist = Vector3.Distance(pos.position, side.transform.position);
+                //  Debug.Log("dist: " + dist);
+
+                if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
+                {
+                    closest = side;
+                }
+
+
+            }
+
+        }
+
+        //  Debug.Log("closest is: " + closest.name);
+        if (AddTile)
+        {
+            SurroundingTiles.Add(closest.gameObject);
+
+        }
+        UpdateConnObj();
+        return closest;
+    }
+    
 
 }

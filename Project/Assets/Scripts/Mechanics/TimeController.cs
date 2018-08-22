@@ -84,12 +84,14 @@ public class TimeController : MonoBehaviour {
         {
 
             //side.GetComponent<ConnectorController>().UpdateAbjObjOnSides();
-
+            side.GetComponent<ConnectorController>().UpdateAbjObjOnSides();
+            side.GetComponent<ConnectorController>().UpdateConnObj();
 
         }
     }
     void TimeIncrementer()
     {
+        
 
         boardController.UpdatePossBOSList();
 
