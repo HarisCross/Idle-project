@@ -80,7 +80,7 @@ public class ConnButtonController : MonoBehaviour {
                 side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().ButtonAdded = true;
 
 
-            }
+            } 
 
             if (side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().upgradeLevel > 0)
             {
@@ -89,8 +89,19 @@ public class ConnButtonController : MonoBehaviour {
                 {
                     ConnButtons[count].transform.GetChild(1).transform.GetComponent<Button>().onClick.AddListener(CSide.SwapConnType);
                     side.transform.parent.transform.gameObject.GetComponent<ConnectorSide>().subButtonAdded = true;
-                   // Debug.Log("listener added");
+                    // Debug.Log("listener added");
 
+                }
+
+                switch (CSide.connectorStatus)
+                {
+                    case 1:
+                        ConnButtons[count].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = "Exp";
+                        break;
+                    case 2:
+                        ConnButtons[count].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = "Inp";
+                        break;
+                    default: break;
                 }
 
             }

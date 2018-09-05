@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1286517843361114
 GameObject:
   m_ObjectHideFlags: 1
@@ -110,24 +110,6 @@ GameObject:
   m_Layer: 0
   m_Name: Side3
   m_TagString: BoxSide
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1521396479988096
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4127093676702168}
-  - component: {fileID: 33994792148525758}
-  - component: {fileID: 23941488690572382}
-  - component: {fileID: 114683103583176692}
-  m_Layer: 0
-  m_Name: BoxSideConnector(Clone)
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,23 +171,6 @@ GameObject:
   - component: {fileID: 4538042763380528}
   m_Layer: 0
   m_Name: CameraPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1646615242620344
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4531837199990338}
-  - component: {fileID: 33762177890418974}
-  - component: {fileID: 23385992336168122}
-  m_Layer: 0
-  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,20 +305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4127093676702168
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1521396479988096}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.50000024, y: 0.20000012, z: 0.5}
-  m_Children:
-  - {fileID: 4531837199990338}
-  m_Father: {fileID: 4392132305868864}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4161055133884266
 Transform:
   m_ObjectHideFlags: 1
@@ -453,7 +404,6 @@ Transform:
   m_Children:
   - {fileID: 4164402627169112}
   - {fileID: 4342614191320672}
-  - {fileID: 4127093676702168}
   m_Father: {fileID: 4295127722475630}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -499,19 +449,6 @@ Transform:
   - {fileID: 4483511344101536}
   m_Father: {fileID: 4295127722475630}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4531837199990338
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1646615242620344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.05, z: 0}
-  m_LocalScale: {x: 0.3, y: 3, z: 0.3}
-  m_Children: []
-  m_Father: {fileID: 4127093676702168}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4538042763380528
 Transform:
@@ -724,41 +661,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23385992336168122
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1646615242620344}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23461113159917322
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -800,41 +702,6 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127564875282956}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: e2ab234575519be46a6b81992fd338b4, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23941488690572382
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1521396479988096}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -920,13 +787,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234400761532010}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &33762177890418974
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1646615242620344}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33786220287402454
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -948,13 +808,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1249820895846604}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &33994792148525758
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1521396479988096}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65235937796914974
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1041,10 +894,12 @@ MonoBehaviour:
   MainBox: {fileID: 114876697394753302}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 1
@@ -1061,12 +916,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainBox: {fileID: 114876697394753302}
   rotateAmount: 0
-  boxSidePresent: 1
-  side: Connector
+  boxSidePresent: 0
+  Rec: 0
+  side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
-  connectorStatus: 2
+  MaxLimit: 150
+  connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 4
 --- !u!114 &114572403251158428
@@ -1083,27 +940,15 @@ MonoBehaviour:
   MainBox: {fileID: 114876697394753302}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 2
---- !u!114 &114683103583176692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1521396479988096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8751aaa403e7e0d49b3fa43b64a0e8c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  side: Connector
-  IncomeHeld: 0
-  IncomeRate: 0
 --- !u!114 &114771888151569092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1118,10 +963,12 @@ MonoBehaviour:
   MainBox: {fileID: 114876697394753302}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 5
@@ -1161,6 +1008,7 @@ MonoBehaviour:
   - {fileID: 0}
   IncomeHeld: 1000
   transferRate: 15
+  MaxLimit: 1500
 --- !u!114 &114978076487340306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1175,10 +1023,12 @@ MonoBehaviour:
   MainBox: {fileID: 114876697394753302}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 3

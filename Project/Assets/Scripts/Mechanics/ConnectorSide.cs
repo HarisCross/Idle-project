@@ -48,7 +48,8 @@ public class ConnectorSide : MonoBehaviour {
 
         if (inpExpSide == null)
         {
-            inpExpSide = CConn.GetNearObjects(this.gameObject.transform, true);
+          //  Debug.Log(this.gameObject.name + this.transform.ToString() + "sent to cc trnas");
+            inpExpSide = CConn.GetNearObjects(gameObject.transform, true);
             CConn.UpdateConnObj();
         }
 
@@ -57,16 +58,17 @@ public class ConnectorSide : MonoBehaviour {
     void UpdateText()
     {
         //updates buttons text using button held above
-
-        if(upgradeLevel == 3)
+        if (buttonAssigned != null)
         {
-            buttonAssigned.transform.GetChild(0).GetComponent<Text>().text = "MAX";
+            if (upgradeLevel == 3)
+            {
+                buttonAssigned.transform.GetChild(0).GetComponent<Text>().text = "MAX";
+            }
+            else
+            {
+                buttonAssigned.transform.GetChild(0).GetComponent<Text>().text = upgradeLevel.ToString();
+            }
         }
-        else
-        {
-            buttonAssigned.transform.GetChild(0).GetComponent<Text>().text = upgradeLevel.ToString();
-        }
-
        
 
 

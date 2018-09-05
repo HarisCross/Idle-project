@@ -145,7 +145,7 @@ public class CameraController : MonoBehaviour {
 
     public void SetTargetPosition(Vector3 pos,GameObject focus,GameObject side)//moves camera to preset position relative to the item selected
     {
-        Debug.Log("focused: " + focus);
+    //    Debug.Log("focused: " + focus);
         oldPos = transform.position;
 
         currTime = 0;

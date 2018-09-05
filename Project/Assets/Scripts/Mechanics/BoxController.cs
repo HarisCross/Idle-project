@@ -305,10 +305,6 @@ public class BoxController : MonoBehaviour {
         AcceptingSides.Clear();
         foreach (GameObject connector in ImpExpSides)
         {
-
-            //if (connector.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
-            //{
-
                 switch (connector.GetComponent<BoxSideController>().connectorStatus)
                 {
 

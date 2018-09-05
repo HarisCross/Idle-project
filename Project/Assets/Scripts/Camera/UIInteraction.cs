@@ -357,6 +357,13 @@ public class UIInteraction : MonoBehaviour {
 
             camController.ConnectorTopFocused(Box);
 
+            foreach(GameObject side in Box.GetComponent<ConnectorController>().ConnectorSides)
+            {
+                Box.GetComponent<ConnectorController>().ImpExpSides.Add(side);
+
+               // .ImpExpSides.Add(sideController.gameObject);
+            }
+
         }
         else
         {

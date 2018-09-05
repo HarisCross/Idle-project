@@ -52,7 +52,41 @@ public class ConnectorController : MonoBehaviour {
     {
       
     }
+    public void UpdateInpExpLists()
+    {
+        ExportSides.Clear();
+        AcceptingSides.Clear();
+        foreach (GameObject side in ImpExpSides)
+        {
+            
+            switch (side.transform.parent.GetComponent<ConnectorSide>().connectorStatus)
+            {
 
+                case 0:
+                    //not connector
+                    Debug.Log("somehow connector hasnt been assigned as a connector");
+                    break;
+                case 1:
+                    //exp side
+                    ExportSides.Add(side);
+
+                    break;
+                case 2:
+                    //inp side
+                    AcceptingSides.Add(side);
+
+                    break;
+                default:
+
+                    break;
+
+            }
+            UpdateConnObj();
+        }
+        // }
+
+
+    }
     public void UpdateAbjObjOnSides()//called when change oocurs to map to update adj objects
     {
 
@@ -157,22 +191,23 @@ public class ConnectorController : MonoBehaviour {
         BoxesToExport.Clear();
         BoxesToImport.Clear();
 
+        Debug.Log("update conn obj " + this.name);
 
         //use bsc - connector, 2 or 1, tile. update whenever it changes
         //  Debug.Log("export count: " + ExportSides.Count);
         foreach (GameObject side in ExportSides)
         {
 
-            if (side.GetComponent<BoxSideController>().inpExpSide != null)
+            if (side.transform.parent.GetComponent<ConnectorSide>().inpExpSide != null)
             {
                 //  Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
-                if (side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+                if (side.transform.parent.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
                 {
-                    BoxesToExport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                    BoxesToExport.Add(side.transform.parent.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
                 }
                 else
                 {
-                    Debug.Log("space doesnt have a box");
+                   // Debug.Log("space doesnt have a box");
                 }
             }
 
@@ -182,15 +217,15 @@ public class ConnectorController : MonoBehaviour {
         foreach (GameObject side in AcceptingSides)
         {
             // Debug.Log("adding: " + side.GetComponent<BoxSideController>().inpExpSide);
-            if (side.GetComponent<BoxSideController>().inpExpSide != null)
+            if (side.transform.parent.GetComponent<ConnectorSide>().inpExpSide != null)
             {
-                if (side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
+                if (side.transform.parent.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
                 {
-                    BoxesToImport.Add(side.GetComponent<BoxSideController>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                    BoxesToImport.Add(side.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
                 }
                 else
                 {
-                    Debug.Log("space doesnt have a box");
+                    //Debug.Log("space doesnt have a box");
                 }
             }
 
@@ -199,6 +234,14 @@ public class ConnectorController : MonoBehaviour {
 
 
 
+
+
+    }
+    public void RemoveNearTile(GameObject tile)//remove the inp/exp tile from the list
+    {
+        GameObject tileToRemove = GetNearObjects(tile.transform, false);
+
+        SurroundingTiles.Remove(tileToRemove);
 
 
     }
@@ -218,8 +261,8 @@ public class ConnectorController : MonoBehaviour {
             }
             else
             {
-                //float dist = Vector3.Distance(pos.position, side.transform.position);
-                //  Debug.Log("dist: " + dist);
+                float dist = Vector3.Distance(pos.position, side.transform.position);
+                  Debug.Log("dist: " + dist + "closest is: " + closest);
 
                 if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
                 {
@@ -231,13 +274,15 @@ public class ConnectorController : MonoBehaviour {
 
         }
 
-        //  Debug.Log("closest is: " + closest.name);
+          Debug.Log(" closest is: " + closest.name);
         if (AddTile)
         {
+          //  Debug.Log("added: " + closest.name);
             SurroundingTiles.Add(closest.gameObject);
 
         }
         UpdateConnObj();
+        //UpdateInpExpLists();
         return closest;
     }
     
