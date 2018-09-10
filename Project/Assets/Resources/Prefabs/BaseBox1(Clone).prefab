@@ -1006,7 +1006,7 @@ MonoBehaviour:
   BoxesToExport: []
   BoxesToImport:
   - {fileID: 0}
-  IncomeHeld: 1000
+  IncomeHeld: 0
   transferRate: 15
   MaxLimit: 1500
 --- !u!114 &114978076487340306

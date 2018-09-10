@@ -648,10 +648,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8258ec013ab4e4f9c86fec12f7b5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerInput: 1
   IncTime: 2
   BoxList: []
   SideList: []
   ConnectorList: []
+--- !u!1001 &132890249
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 25.395338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.55000025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 25.213211
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164277827473210, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899567878748818, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f28f7af042407b04c808bd71637830c1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &136877193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,6 +4337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c63b78831c8dce4196118169459b2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CCon: {fileID: 2088816694}
   Active: 0
   ButtonsActive: 0
   ConnButtons:
@@ -4771,7 +4819,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4802574478061090, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231263530241674, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720084422441264, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780103668069746, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158233450782032, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720084422441264, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705235115865242, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614903502772138, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1807730137721922, guid: 8e395578fcda597479f7ed0b10bbe714, type: 2}
       propertyPath: m_IsActive
@@ -13567,6 +13643,8 @@ MonoBehaviour:
   CameraLocked: 0
   moving: 0
   ViewingObject: 0
+  Tcont: {fileID: 129589997}
+  paused: 0
 --- !u!1 &2101677165
 GameObject:
   m_ObjectHideFlags: 0

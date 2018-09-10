@@ -46,11 +46,17 @@ public class ConnectorSide : MonoBehaviour {
 	void Update () {
         UpdateText();
 
-        if (inpExpSide == null)
+        if (inpExpSide == null && upgradeLevel != 0)
         {
-          //  Debug.Log(this.gameObject.name + this.transform.ToString() + "sent to cc trnas");
-            inpExpSide = CConn.GetNearObjects(gameObject.transform, true);
+          // Debug.Log(this.gameObject.name + this.transform.ToString() + "sent to cc trnas");
+         //  Debug.Log(this.transform.GetChild(0).GetChild(1).transform.name + this.transform.GetChild(0).GetChild(1).transform.transform.ToString() + "sent to cc trnas");
+            //inpExpSide = CConn.GetNearObjects(this.gameObject.transform, true);
+
+            //since dist check is activated when this will be called then it can be used to get the inpexptile
+
+            inpExpSide = CConn.GetNearObjects(this.transform.GetChild(0).GetChild(1).transform, true);
             CConn.UpdateConnObj();
+            CConn.UpdateInpExpLists();
         }
 
     }
@@ -104,6 +110,11 @@ public class ConnectorSide : MonoBehaviour {
             case 1: connectorStatus = 2;break;
             case 2: connectorStatus = 1;break;
         }
+
+        // boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
+
+        CConn.UpdateInpExpLists();
+
         SideConnectorCol();
     }
     public void ModifySide()
@@ -163,7 +174,11 @@ public class ConnectorSide : MonoBehaviour {
                 //upgrade the side
                 playerCon.Money -= uCost;
                 upgradeLevel++;
-               // UpdateRate();
+
+                if(CConn.transferRate < (25 * upgradeLevel)) CConn.transferRate = (25 * upgradeLevel);
+
+
+                // UpdateRate();
             }
             else
             {

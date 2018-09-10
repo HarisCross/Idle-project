@@ -20,8 +20,9 @@ public class CameraController : MonoBehaviour {
 
     public bool CameraLocked = false, moving = false, ViewingObject = false;
 
+    public TimeController Tcont;
     Transform targetPos;
-    private bool paused = false;
+    public bool paused = false;
     private bool sideFocused = false;
     private UIInteraction uiInteraction;
 
@@ -29,7 +30,7 @@ public class CameraController : MonoBehaviour {
     {
         uiInteraction = GameObject.Find("UI").GetComponent<UIInteraction>();
         player = GameObject.Find("Player");
-
+       
         Cursor.lockState = CursorLockMode.Confined;
 
         screenWidth = Screen.width;
@@ -101,34 +102,37 @@ public class CameraController : MonoBehaviour {
     }
     private void InputChecks()
     {
-        if (Input.GetMouseButton(1) && CameraLocked == true)
+        if (moving == false)
         {
-
-            //targetPos = transform;
-            MoveBack();
-            uiInteraction.DisableSideButtons();
-        
-        }
-
-
-        if (Input.GetKey("escape"))
-        {
-            Application.Quit();
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            ClickOnObject();
-
-
-            if (CameraLocked == false)
+            if (Input.GetMouseButton(1) && CameraLocked == true && paused == false)
             {
-                MoveCamera();
+
+                //targetPos = transform;
+                MoveBack();
+                uiInteraction.DisableSideButtons();
+
             }
-        }
-        else if (Input.GetMouseButton(1) & CameraLocked == false)
-        {
-            RotateCamera();
+
+
+            if (Input.GetKey("escape"))
+            {
+                Application.Quit();
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                ClickOnObject();
+
+
+                if (CameraLocked == false)
+                {
+                    MoveCamera();
+                }
+            }
+            else if (Input.GetMouseButton(1) & CameraLocked == false)
+            {
+                RotateCamera();
+            }
         }
     }
     public void ConnectorTopFocused(GameObject Connector)
@@ -145,7 +149,9 @@ public class CameraController : MonoBehaviour {
 
     public void SetTargetPosition(Vector3 pos,GameObject focus,GameObject side)//moves camera to preset position relative to the item selected
     {
-    //    Debug.Log("focused: " + focus);
+        //    Debug.Log("focused: " + focus);
+
+        //PauseCamera(1f);
         oldPos = transform.position;
 
         currTime = 0;
@@ -164,7 +170,7 @@ public class CameraController : MonoBehaviour {
     }
     public void MoveBackToOldPosition(Vector3 pos)//moves caerma to pos before clicking the item
     {
-
+      //  PauseCamera(1f);
         currTime = 0;
         startPos = transform.position;
         timeTaken = 1f;

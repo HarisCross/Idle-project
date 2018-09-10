@@ -894,10 +894,12 @@ MonoBehaviour:
   MainBox: {fileID: 114782470640727778}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 5
@@ -915,10 +917,12 @@ MonoBehaviour:
   MainBox: {fileID: 114782470640727778}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 4
@@ -936,10 +940,12 @@ MonoBehaviour:
   MainBox: {fileID: 114782470640727778}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 2
@@ -957,10 +963,12 @@ MonoBehaviour:
   MainBox: {fileID: 114782470640727778}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 1
@@ -978,10 +986,12 @@ MonoBehaviour:
   MainBox: {fileID: 114782470640727778}
   rotateAmount: 0
   boxSidePresent: 0
+  Rec: 0
   side: 
   IncomeHeld: 0
   IncomeRate: 0
   transferRate: 2.5
+  MaxLimit: 150
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 3
@@ -1006,5 +1016,6 @@ MonoBehaviour:
   SurroundingTiles: []
   BoxesToExport: []
   BoxesToImport: []
-  IncomeHeld: 1000
+  IncomeHeld: 0
   transferRate: 15
+  MaxLimit: 1500

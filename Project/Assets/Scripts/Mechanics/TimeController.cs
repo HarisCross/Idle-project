@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour {
 
+
+    public bool PlayerInput = true;
+
     public float IncTime=2;
     private BoardController boardController;
     private RecieverController RecieverController;

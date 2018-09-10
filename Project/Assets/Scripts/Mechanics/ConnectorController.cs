@@ -27,7 +27,7 @@ public class ConnectorController : MonoBehaviour {
     //box values//
     [SerializeField]
     public float IncomeHeld = 0f;
-   // public float transferRate = 15f;
+    public float transferRate =100f;
     public float MaxLimit = 350f;
     //box values//
 
@@ -50,7 +50,100 @@ public class ConnectorController : MonoBehaviour {
     }
     public void Timedpdate()
     {
-      
+        MoneyTransferExport();
+    }
+    private void MoneyTransferExport()
+    {
+
+        IncomeHeld = Mathf.Round(IncomeHeld);
+        int count = BoxesToExport.Count;
+        float moneySplit;
+
+        foreach (GameObject box in BoxesToExport)
+        {
+            if (CanTransfer(box) == false)
+            {
+                //  Debug.Log("can trasnfer failed");
+                return;
+            }
+
+            if (IncomeHeld > transferRate)
+            {
+                //if held is more than transfer rate
+                // box.AddIncome(transferRate);
+
+
+                moneySplit = Mathf.Round((transferRate / count));
+
+
+                if (box.GetComponent<BoxController>() != null)
+                {
+
+                    box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+
+
+                }
+
+                if (box.GetComponent<ConnectorController>() != null)
+                {
+
+                    box.GetComponent<ConnectorController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+                if (box.GetComponent<RecieverController>() != null)
+                {
+                    box.GetComponent<RecieverController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+
+
+                //  Debug.Log("TRansfered money");
+
+
+                IncomeHeld -= transferRate;
+            }
+            else
+            {
+                //if held isnt more than rate
+                //  box.AddIncome(IncomeHeld);
+
+                moneySplit = Mathf.Round(IncomeHeld / count);
+
+
+                if (box.GetComponent<BoxController>() != null)
+                {
+
+                    box.GetComponent<BoxController>().IncomeHeld += moneySplit;
+
+
+                }
+
+                if (box.GetComponent<ConnectorController>() != null)
+                {
+
+                    box.GetComponent<ConnectorController>().IncomeHeld += moneySplit;
+
+
+                }
+
+
+                if (box.GetComponent<RecieverController>() != null)
+                {
+                    box.GetComponent<RecieverController>().IncomeHeld += moneySplit;
+
+
+                }
+                IncomeHeld -= IncomeHeld;
+            }
+
+        }
+
     }
     public void UpdateInpExpLists()
     {
@@ -185,7 +278,6 @@ public class ConnectorController : MonoBehaviour {
 
         return ret;
     }
-
     public void UpdateConnObj()
     {
         BoxesToExport.Clear();
@@ -221,7 +313,13 @@ public class ConnectorController : MonoBehaviour {
             {
                 if (side.transform.parent.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox != null)
                 {
-                    BoxesToImport.Add(side.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                    //print(side.name);
+                    //print(side.transform.parent.GetComponent<ConnectorSide>().inpExpSide.gameObject.name);
+                    //print(side.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
+                   
+
+
+                    BoxesToImport.Add(side.transform.parent.GetComponent<ConnectorSide>().inpExpSide.GetComponent<BoardSpaceController>().CurrentBox);
                 }
                 else
                 {
@@ -262,7 +360,7 @@ public class ConnectorController : MonoBehaviour {
             else
             {
                 float dist = Vector3.Distance(pos.position, side.transform.position);
-                  Debug.Log("dist: " + dist + "closest is: " + closest);
+                 // Debug.Log("dist: " + dist + "closest is: " + closest);
 
                 if (Vector3.Distance(closest.gameObject.transform.position, pos.transform.position) > Vector3.Distance(pos.position, side.transform.position))
                 {

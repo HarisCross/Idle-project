@@ -46,9 +46,9 @@ public class UIInteraction : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+
         CheckUIDisplay();
-
-
         ButtonUpdate();
 
 
@@ -182,8 +182,11 @@ public class UIInteraction : MonoBehaviour {
     }
     private void CheckUIDisplay()
     {
+      
 
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+       // ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
         if (GameObject.Find("BoardGrid").GetComponent<BoardController>().DisplayAvail == false)
         {

@@ -67,7 +67,7 @@ public class BoxController : MonoBehaviour {
     private bool CanTransfer(GameObject box)
     {
         bool ret = false;
-        Debug.Log(box.name);
+      //  Debug.Log(box.name);
 
 
         if (box.GetComponent<BoxController>() != null)
@@ -232,27 +232,11 @@ public class BoxController : MonoBehaviour {
 
 
                 }
-
-
-
-
-
-
-
-//
-               // Debug.Log("TRansfered money");
-
-
                 IncomeHeld -= IncomeHeld;
             }
 
         }
    
-
-
-
-
-
     }
     public void AddIncome(float amount)
     {
@@ -400,7 +384,7 @@ public class BoxController : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("space doesnt have a box");
+              //      Debug.Log("space doesnt have a box");
                 }
             }
 
@@ -417,7 +401,7 @@ public class BoxController : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("space doesnt have a box");
+                 //   Debug.Log("space doesnt have a box");
                 }
             }
 

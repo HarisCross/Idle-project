@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ConnButtonController : MonoBehaviour {
 
+    public CameraController CCon;
     public bool Active = false;
     public bool ButtonsActive = false;
     public List<GameObject> ConnButtons = new List<GameObject>();
@@ -162,7 +163,8 @@ public class ConnButtonController : MonoBehaviour {
         float timer = 1f;
         if (var)
         {
-            yield return new WaitForSecondsRealtime(1f);
+           // CCon.moving = true;
+           // yield return new WaitForSecondsRealtime(1f);
             do
             {
 
@@ -170,8 +172,8 @@ public class ConnButtonController : MonoBehaviour {
 
 
                 button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
-                
-                yield return new WaitForSecondsRealtime(0.01f);
+                button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+                yield return new WaitForSecondsRealtime(0.005f);
               //  Debug.Log("filling");
 
             } while (button.GetComponent<Image>().fillAmount <0.95f);
@@ -185,27 +187,34 @@ public class ConnButtonController : MonoBehaviour {
 
 
            
-            timer = 1f;
-            do
-            {
-                // button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
-                button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+            //timer = 1f;
+            //do
+            //{
+            //    // button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+            //    button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
 
-                yield return new WaitForSecondsRealtime(0.01f);
-            } while (button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount < 0.95f);
+            //    yield return new WaitForSecondsRealtime(0.01f);
+            //} while (button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount < 0.95f);
 
             button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount = 1f;
             button.transform.GetChild(1).transform.GetComponent<Button>().interactable = true;
             button.transform.GetChild(1).transform.transform.GetChild(0).transform.gameObject.SetActive(true);
+
+           // yield return new WaitForSecondsRealtime(1f);
+           // CCon.moving = false;
         }
         else
         {
+
+           // CCon.moving = true;
             button.GetComponent<Button>().interactable = false;
             button.transform.GetChild(0).transform.gameObject.SetActive(false);
             do
             {
 
                 button.GetComponent<Image>().fillAmount -= timer * Time.deltaTime;
+                button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount -= timer * Time.deltaTime;
+
                 yield return new WaitForSecondsRealtime(0.01f);
 
             } while (button.GetComponent<Image>().fillAmount >0);
@@ -214,19 +223,19 @@ public class ConnButtonController : MonoBehaviour {
             button.transform.GetChild(1).transform.GetComponent<Button>().interactable = false;
             button.transform.GetChild(1).transform.transform.GetChild(0).transform.gameObject.SetActive(false);
 
-            timer = 1f;
-            do
-            {
-                // button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
-                button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount -= timer * Time.deltaTime;
+            //timer = 1f;
+            //do
+            //{
+            //    // button.GetComponent<Image>().fillAmount += timer * Time.deltaTime;
+            //    button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount -= timer * Time.deltaTime;
 
-                yield return new WaitForSecondsRealtime(0.01f);
-            } while (button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount >0);
+            //    yield return new WaitForSecondsRealtime(0.01f);
+            //} while (button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount >0);
 
             button.transform.GetChild(1).transform.GetComponent<Image>().fillAmount = 0f;
 
-
-
+           // yield return new WaitForSecondsRealtime(2f);
+           // CCon.moving = false;
         }
         yield return null;
     }
