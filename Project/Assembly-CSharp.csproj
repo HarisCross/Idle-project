@@ -59,15 +59,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ConnButtonController.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Camera\UIbuttonController.cs" />
     <Compile Include="Assets\Scripts\Camera\UIInteraction.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoardController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoardSpaceController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoxController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoxSideController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BoxSideDetails.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\ConnButtonController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\ConnectorController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\ConnectorSide.cs" />
     <Compile Include="Assets\Scripts\Mechanics\PlayerController.cs" />
