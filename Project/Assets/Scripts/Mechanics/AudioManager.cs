@@ -25,10 +25,11 @@ public class AudioManager : MonoBehaviour {
     /// </summary>
 
     public AudioMixer MasterMixer; // exposed: MasterVolume, MusicMixerGroupVolume, SFXMixerGroupVolume
-    public AudioMixer MusicMixer;
-    public AudioMixer SFXMixer;
-        
+    public AudioMixerGroup MusixMixerGroup;
+    public AudioMixerGroup SFXMixerGroup;
 
+    public AudioClip objectConstructionClip;
+    public AudioClip objectDeconstructionClip;
 
 	// Use this for initialization
 	void Start () {
@@ -45,44 +46,51 @@ public class AudioManager : MonoBehaviour {
 	}
     public void MainVolChanged()
     {
-        //  mainVolSlider = System.Math.Round(mainVolSliderGO.value, 2);
-
         MasterMixer.SetFloat("MasterVolume", (mainVolSliderGO.value));
-
-
-
 
     }
     public void SfxVolChanged()
     {
-        //if (sfxVolSliderGO.value < mainVolSliderGO.value)
-        //{
-        //    //if sfx vol is lower than main vol then set sfx to slider value else set sfx to main vol value
-        //    sfxVolSlider = System.Math.Round(sfxVolSliderGO.value, 2);
-        //    print("allowed change");
-        //}
-        //else
-        //{
-        //    print("main volume restricted");
-        //    sfxVolSlider = mainVolSlider;
-        //}
-
-
         MasterMixer.SetFloat("SFXMixerGroupVolume", (sfxVolSliderGO.value));
-
-
-
-
 
     }
     public void MusicVolChanged()
     {
-        //mainVolSlider = System.Math.Round(mainVolSliderGO.value, 2);
-
-
         MasterMixer.SetFloat("MusicMixerGroupVolume", (musicVolSliderGO.value));
+    }
+
+
+    public void ObjectConstruction(GameObject source)
+    {
+        
+        //print("start" + source.name);
+        if (source.GetComponent<AudioSource>() == null)
+        {
+          //  print("made audiosource");
+            AudioSource tempSource = source.AddComponent<AudioSource>();
+            tempSource.outputAudioMixerGroup = SFXMixerGroup;
+            tempSource.PlayOneShot(objectConstructionClip, 0.1f);
+        }
+        source.GetComponent<AudioSource>().outputAudioMixerGroup = SFXMixerGroup;
+        source.GetComponent<AudioSource>().PlayOneShot(objectConstructionClip, 0.1f);
+        //Destroy(tempSource);
+       // print("stop");
+    }
+    public void ObjectDeconstruction(GameObject source)
+    {
+
+        if (source.GetComponent<AudioSource>() == null)
+        {
+            //print("made audiosource");
+            AudioSource tempSource = source.AddComponent<AudioSource>();
+            tempSource.outputAudioMixerGroup = SFXMixerGroup;
+            tempSource.PlayOneShot(objectDeconstructionClip, 0.25f);
+        }
+        source.GetComponent<AudioSource>().outputAudioMixerGroup = SFXMixerGroup;
+        source.GetComponent<AudioSource>().PlayOneShot(objectDeconstructionClip, 0.25f);
 
 
 
+       
     }
 }

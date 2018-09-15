@@ -11,6 +11,9 @@ public class UIInteraction : MonoBehaviour {
     private BoardController boardController;
     private TimeController timeController;
     private CameraController camController;
+    public AudioManager audioManager;
+
+
     public GameObject DeleteSideButton;
     public GameObject DeleteBoxButton;
     public GameObject ConnSwapButton;
@@ -33,6 +36,7 @@ public class UIInteraction : MonoBehaviour {
     public GameObject boxSideFocused;//the numbered side with controller
     public GameObject side;//side object spawned in
     GameObject sideLoc;
+
 
     void Start() {
 
@@ -318,6 +322,8 @@ public class UIInteraction : MonoBehaviour {
 
             Box.GetComponent<BoxController>().SpaceTaken = hit.transform.gameObject;
 
+            audioManager.ObjectConstruction(Box);
+
         }
         else
         {
@@ -329,6 +335,7 @@ public class UIInteraction : MonoBehaviour {
 
 
     }
+
     private void SpawnConnector(RaycastHit hitInfo)
     {
         int price = 100;
@@ -366,7 +373,7 @@ public class UIInteraction : MonoBehaviour {
 
                // .ImpExpSides.Add(sideController.gameObject);
             }
-
+            audioManager.ObjectConstruction(Box);
         }
         else
         {
@@ -486,7 +493,7 @@ public class UIInteraction : MonoBehaviour {
         }
 
         //sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
-
+        audioManager.ObjectDeconstruction(boxSideFocused);
         Destroy(boxSideFocused.transform.GetChild(2).gameObject);
 
         side = null;
@@ -501,13 +508,35 @@ public class UIInteraction : MonoBehaviour {
     public void DeleteBox()
     {
         GameObject box = boxSideFocused.transform.parent.parent.transform.gameObject;
-        Debug.Log(box.name);
+       // audioManager.ObjectDeconstruction(box);
+        
+        
+
+        if (box.name == "ConnHolder")
+        {
+            box = boxSideFocused.transform.parent.transform.gameObject;
+        }
+
+
+        // Debug.Log(box.name);
 
         //update board grid!!!!!!!!!!!!!!!!!!!
 
         timeController.UpdateRemoveList(box);
 
-        box.GetComponent<BoxController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        if (box.GetComponent<BoxController>())
+        {
+
+            box.GetComponent<BoxController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        }
+        else
+        {
+          //  print(box.name);
+            box.GetComponent<ConnectorController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        }
+
+
+
         //updater the spaces bool values
         Destroy(box);
 
@@ -532,6 +561,7 @@ public class UIInteraction : MonoBehaviour {
         side.transform.parent = sideLoc.transform;
         boxSideFocused.transform.GetChild(0).gameObject.SetActive(false);
 
+        audioManager.ObjectConstruction(boxSideFocused.transform.parent.gameObject);
         //switch to rotate side to display properly on each side
 
         ///#####i have no clue why changing the X axis makes it rotate around the Y axisd like wanted but meh

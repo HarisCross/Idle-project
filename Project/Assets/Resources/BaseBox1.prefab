@@ -903,6 +903,10 @@ MonoBehaviour:
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 5
+  ACSide1: {fileID: 0}
+  ACSide2: {fileID: 0}
+  ACSide3: {fileID: 0}
+  ACSideConnector: {fileID: 0}
 --- !u!114 &114211023669625528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,6 +930,10 @@ MonoBehaviour:
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 4
+  ACSide1: {fileID: 0}
+  ACSide2: {fileID: 0}
+  ACSide3: {fileID: 0}
+  ACSideConnector: {fileID: 0}
 --- !u!114 &114381541616123000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -949,6 +957,10 @@ MonoBehaviour:
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 2
+  ACSide1: {fileID: 0}
+  ACSide2: {fileID: 0}
+  ACSide3: {fileID: 0}
+  ACSideConnector: {fileID: 0}
 --- !u!114 &114582914647993700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -972,6 +984,10 @@ MonoBehaviour:
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 1
+  ACSide1: {fileID: 8300000, guid: 5871fa6dff08aa742b6a0dc9a5c93bc0, type: 3}
+  ACSide2: {fileID: 8300000, guid: af8d284b6cdd4574db713e58a8d9a2c3, type: 3}
+  ACSide3: {fileID: 8300000, guid: 80f51c8db36f1a4428706259c9349e36, type: 3}
+  ACSideConnector: {fileID: 8300000, guid: a6f5d4ad3dc139f4fb280b04eae5dbe9, type: 3}
 --- !u!114 &114681268366205192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -995,6 +1011,10 @@ MonoBehaviour:
   connectorStatus: 0
   inpExpSide: {fileID: 0}
   SideNumber: 3
+  ACSide1: {fileID: 0}
+  ACSide2: {fileID: 0}
+  ACSide3: {fileID: 0}
+  ACSideConnector: {fileID: 0}
 --- !u!114 &114782470640727778
 MonoBehaviour:
   m_ObjectHideFlags: 1

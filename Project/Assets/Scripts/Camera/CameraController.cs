@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour {
     public bool paused = false;
     private bool sideFocused = false;
     private UIInteraction uiInteraction;
-
+    public GameObject DefaultViewPoint;
     private void Awake()
     {
         uiInteraction = GameObject.Find("UI").GetComponent<UIInteraction>();
@@ -82,7 +82,8 @@ public class CameraController : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("target pos is empty");
+                   // Debug.Log("target pos is empty");
+                    transform.LookAt(DefaultViewPoint.transform);
                 }
                 if (Vector3.Distance(transform.position, tPos) < 0.1f)
                 {

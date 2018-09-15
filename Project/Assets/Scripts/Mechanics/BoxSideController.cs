@@ -25,6 +25,11 @@ public class BoxSideController : MonoBehaviour {
 
     public int SideNumber;
 
+    public AudioClip ACSide1;
+    public AudioClip ACSide2;
+    public AudioClip ACSide3;
+    public AudioClip ACSideConnector;
+
     // Use this for initialization
     void Start () {
 
