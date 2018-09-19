@@ -8,11 +8,7 @@ public class BoxSideController : MonoBehaviour {
     public float rotateAmount;
     public bool boxSidePresent = false;
     public bool Rec = false;
-    //public enum SideConnector { Input,Output,None}
-    //public SideConnector sideConnector = SideConnector.None;
 
-    //box side values//
-    // public enum SideType { Input, Output, BonusModifier }
     public string side = "";
     public float IncomeHeld = 0;
     public float IncomeRate = 0f;
@@ -25,10 +21,6 @@ public class BoxSideController : MonoBehaviour {
 
     public int SideNumber;
 
-    public AudioClip ACSide1;
-    public AudioClip ACSide2;
-    public AudioClip ACSide3;
-    public AudioClip ACSideConnector;
 
     // Use this for initialization
     void Start () {
@@ -60,6 +52,7 @@ public class BoxSideController : MonoBehaviour {
             IncomeHeld -= IncomeHeld;
         }
     }
+  
     // Update is called once per frame
     void Update () {
         if (Rec == false)

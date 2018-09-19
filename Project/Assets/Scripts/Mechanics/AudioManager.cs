@@ -6,29 +6,22 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour {
 
-    //public AudioSource sfxClip;
-    //public AudioSource musicClip;
-
-    //public double sfxVolSlider;
-    //public double musicVolSlider;
-    //public double mainVolSlider; // if lower than sliders above then use this instead.
-
     public Slider mainVolSliderGO;
     public Slider sfxVolSliderGO;
     public Slider musicVolSliderGO;
 
-    // public float lowPitch = .95f;
-    // public float highPitch = 1.05f;
-
-    /// <summary>
-    /// //////////////////////////////////
-    /// </summary>
+    public bool masterMute;//toggled to mute and unmute
+    private float masterMuteFloat;//stores old volume to reset too after unmute
+    public bool MusicMute;
+    private float musixMuteFloat;
+    public bool SFXMute;
+    private float SFXMuteFloat;
 
     public AudioMixer MasterMixer; // exposed: MasterVolume, MusicMixerGroupVolume, SFXMixerGroupVolume
     public AudioMixerGroup MusixMixerGroup;
     public AudioMixerGroup SFXMixerGroup;
 
-    public AudioClip objectConstructionClip;
+    public AudioClip objectConstructionClip; // clips to play on object made or destroyed
     public AudioClip objectDeconstructionClip;
 
 	// Use this for initialization
@@ -44,9 +37,62 @@ public class AudioManager : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void ToggleMainMute()
+    {
+        if (masterMute == true)
+        {
+            masterMute = !masterMute;
+
+            MasterMixer.SetFloat("MasterVolume", masterMuteFloat);
+        }
+        else
+        {
+            masterMute = !masterMute;
+            MasterMixer.GetFloat("MasterVolume", out masterMuteFloat);
+            MasterMixer.SetFloat("MasterVolume", -80);
+
+        }
+
+    }
+    public void ToggleMusicMute()
+    {
+
+        if (MusicMute == true)
+        {
+            MusicMute = !MusicMute;
+
+            MasterMixer.SetFloat("MusicMixerGroupVolume", musixMuteFloat);
+        }
+        else
+        {
+            MusicMute = !MusicMute;
+            MasterMixer.GetFloat("MusicMixerGroupVolume", out musixMuteFloat);
+            MasterMixer.SetFloat("MusicMixerGroupVolume", -80);
+
+        }
+
+    }
+    public void ToggleSFXMute()
+    {
+        if (SFXMute == true)
+        {
+            SFXMute = !SFXMute;
+
+            MasterMixer.SetFloat("SFXMixerGroupVolume", SFXMuteFloat);
+        }
+        else
+        {
+            SFXMute = !SFXMute;
+            MasterMixer.GetFloat("SFXMixerGroupVolume", out SFXMuteFloat);
+            MasterMixer.SetFloat("SFXMixerGroupVolume", -80);
+
+        }
+
+        
+    }
     public void MainVolChanged()
     {
-        MasterMixer.SetFloat("MasterVolume", (mainVolSliderGO.value));
+            MasterMixer.SetFloat("MasterVolume", (mainVolSliderGO.value));
 
     }
     public void SfxVolChanged()
