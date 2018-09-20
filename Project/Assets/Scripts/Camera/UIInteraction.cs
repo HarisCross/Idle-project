@@ -13,6 +13,8 @@ public class UIInteraction : MonoBehaviour {
     private CameraController camController;
     public AudioManager audioManager;
 
+    public GameObject Menu;private bool menuEnabled = true;
+    public GameObject menuButton;private bool menuButtonEnabled;
 
     public GameObject DeleteSideButton;
     public GameObject DeleteBoxButton;
@@ -29,7 +31,7 @@ public class UIInteraction : MonoBehaviour {
 
     public bool BoxOrConn = true; // true for box, false for conn
 
-    private Text ErrorText;
+  //  private Text ErrorText;
     private Ray ray;
     private RaycastHit hit;
 
@@ -43,7 +45,7 @@ public class UIInteraction : MonoBehaviour {
 
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         boardController = GameObject.Find("BoardGrid").GetComponent<BoardController>();
-        ErrorText = GameObject.Find("ErrorDisplayText").GetComponent<Text>();
+        //ErrorText = GameObject.Find("ErrorDisplayText").GetComponent<Text>();
         timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         camController = GameObject.Find("Player").GetComponent<CameraController>();
     }
@@ -316,7 +318,7 @@ public class UIInteraction : MonoBehaviour {
 
             player.gameObject.GetComponent<CameraController>().PauseCamera(0.5f);
 
-            ErrorText.text = "";
+           // ErrorText.text = "";
 
             timeController.UpdateAddList(Box);
 
@@ -328,7 +330,7 @@ public class UIInteraction : MonoBehaviour {
         else
         {
             //not enough money
-            ErrorText.text = "UI - Not enough money";
+          //  ErrorText.text = "UI - Not enough money";
 
         }
 
@@ -359,7 +361,7 @@ public class UIInteraction : MonoBehaviour {
 
             player.gameObject.GetComponent<CameraController>().PauseCamera(0.5f);
 
-            ErrorText.text = "";
+          //  ErrorText.text = "";
 
             timeController.UpdateAddList(Box);
 
@@ -378,7 +380,7 @@ public class UIInteraction : MonoBehaviour {
         else
         {
             //not enough money
-            ErrorText.text = "UI - Not enough money";
+            //ErrorText.text = "UI - Not enough money";
 
         }
 
@@ -631,7 +633,37 @@ public class UIInteraction : MonoBehaviour {
         }
        // sideController.MainBox.GetComponent<BoxController>().UpdateLists();
     }
-   
+   public void MenuEnableDisable()
+    {
 
+        Menu.SetActive(menuEnabled);
+        menuEnabled = !menuEnabled;
+
+        menuButton.SetActive(menuButtonEnabled);
+        menuButtonEnabled = !menuButtonEnabled;
+
+    }
+    public void FullscreenFlip()
+    {
+
+        //if (Screen.fullScreen == false)
+        //{
+        //    //if fullscreen
+        //    Screen.fullScreenMode = FullScreenMode.Windowed;
+        //    Screen.fullScreen = true;
+        //    Debug.Log("swap to windowed");
+        //}
+        //else
+        //{
+        //    Debug.Log("spawn to fullscreen");
+        //    Screen.fullScreen = false;
+        //    Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        //}
+
+
+
+        // Screen.fullScreenMode = !Screen.fullScreen;
+        // print("screen is: " +Screen.fullScreen);
+    }
 
 }
