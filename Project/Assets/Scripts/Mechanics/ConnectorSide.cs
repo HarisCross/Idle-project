@@ -167,7 +167,7 @@ public class ConnectorSide : MonoBehaviour {
 
             }
 
-            if (playerCon.Money > uCost && upgradeLevel <= 3)
+            if (playerCon.Money > uCost && upgradeLevel < 3)
             {
                 //can afford purchase
 

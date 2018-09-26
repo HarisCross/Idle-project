@@ -121,7 +121,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.Pat
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.Useful.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.CecilTools.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.Cecil.Pdb.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.AIModule.xml
@@ -205,3 +204,4 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-E
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.csproj.CopyComplete
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.pdb
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp.pdb

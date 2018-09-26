@@ -25,10 +25,10 @@ public class RecieverController : MonoBehaviour {
 	void Update () {
 
 
-
         UpdateBTI();
 
-        if(IncomeHeld > MaxLimit)
+
+        if (IncomeHeld > MaxLimit)
         {
             IncomeHeld = MaxLimit;
         }
@@ -37,7 +37,7 @@ public class RecieverController : MonoBehaviour {
     }
     public void Timedpdate()
     {
-
+        
         if (IncomeHeld > transferRate)
         {
             //if held is more than transfer rate
@@ -59,6 +59,8 @@ public class RecieverController : MonoBehaviour {
     private void UpdateBTI()
     {
         BoxesToImport.Clear();
+
+
         foreach(GameObject Tile in RecievingTiles)
         {
 
@@ -70,6 +72,11 @@ public class RecieverController : MonoBehaviour {
 
 
 
+            }
+            else
+            {
+               // print("its null");
+             //   print("tile: " + Tile.name + " is null");
             }
 
         }

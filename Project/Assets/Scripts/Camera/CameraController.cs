@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour {
 
     private int screenWidth, screenHeight,movementSpeed = 5;
     public int edgeBoundary = 50;
-    public float CameraHeight = 3f;
+    public float CameraHeight = 3.5f;
     private GameObject player;
     float timeTaken = 3f, currTime;
     Vector3 startPos,tPos,oldPos;
@@ -26,6 +26,12 @@ public class CameraController : MonoBehaviour {
     private bool sideFocused = false;
     private UIInteraction uiInteraction;
     public GameObject DefaultViewPoint;
+
+
+    private float MIN_Y = 3; private float MAX_Y = 6;
+    private float MIN_X = 47;private float MAX_X = 53;
+    private float MIN_Z = 47;private float MAX_Z = 53;
+
     private void Awake()
     {
         uiInteraction = GameObject.Find("UI").GetComponent<UIInteraction>();
@@ -35,6 +41,7 @@ public class CameraController : MonoBehaviour {
 
         screenWidth = Screen.width;
         screenHeight = Screen.height;
+
        
     }
     public void PauseCamera(float tim)
@@ -95,6 +102,7 @@ public class CameraController : MonoBehaviour {
 
         }
 
+
     }
 
     public void MoveBack()
@@ -133,7 +141,21 @@ public class CameraController : MonoBehaviour {
             else if (Input.GetMouseButton(1) & CameraLocked == false)
             {
                 RotateCamera();
+                Cursor.lockState = CursorLockMode.Locked;
+               // Cursor.lockState = CursorLockMode.Confined;
             }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+
+
+           
+            //Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            
         }
     }
     public void ConnectorTopFocused(GameObject Connector)
@@ -278,6 +300,8 @@ public class CameraController : MonoBehaviour {
     void MoveCamera()
     {
 
+
+
         //corners
         if (Input.mousePosition.x > (screenWidth - edgeBoundary) & Input.mousePosition.y > (screenHeight - edgeBoundary))//forward/right
         {
@@ -286,7 +310,12 @@ public class CameraController : MonoBehaviour {
             transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //Vector3  temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3  temp = new Vector3(Mathf.Clamp(transform.position.x,MIN_X,MAX_X), Mathf.Clamp(transform.position.y, MIN_Y,MAX_Y), Mathf.Clamp(transform.position.z,MIN_Z,MAX_Z));
+
+
+
+            transform.position = temp;
             
             return;
         }
@@ -298,8 +327,12 @@ public class CameraController : MonoBehaviour {
             transform.Translate(-Vector3.right * movementSpeed * Time.deltaTime);
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+
+            transform.position = temp;
             return;
         }
 
@@ -310,8 +343,11 @@ public class CameraController : MonoBehaviour {
             transform.Translate(-Vector3.forward * movementSpeed * Time.deltaTime);
             transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+            transform.position = temp;
             return;
         }
 
@@ -322,8 +358,11 @@ public class CameraController : MonoBehaviour {
             transform.Translate(-Vector3.forward * movementSpeed * Time.deltaTime);
             transform.Translate(-Vector3.right * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+            transform.position = temp;
             return;
         }
 
@@ -338,8 +377,11 @@ public class CameraController : MonoBehaviour {
 
             transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+            transform.position = temp;
             return;
         }
 
@@ -349,8 +391,11 @@ public class CameraController : MonoBehaviour {
 
             transform.Translate(-Vector3.right * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // Vector3  temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+
+            transform.position = temp;
             return;
         }
 
@@ -360,8 +405,13 @@ public class CameraController : MonoBehaviour {
 
             transform.Translate(Vector3.forward * movementSpeed* Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //  Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+
+
+            transform.position = temp;
             return;
         }
 
@@ -371,19 +421,129 @@ public class CameraController : MonoBehaviour {
 
             transform.Translate(-Vector3.forward * movementSpeed * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
 
+
+
+            transform.position = temp;
             return;
         }
+
+
+
+        //move up and down
+
+
 
     }
     void RotateCamera()
     {
-
+        //rotate
          yaw += RotSpeed * Input.GetAxis("Mouse X");
          pitch -= RotSpeed * Input.GetAxis("Mouse Y");
-
+        
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+
+
+
+
+
+        //up and down
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log("UP");
+
+            transform.Translate(Vector3.up * movementSpeed * Time.deltaTime/*,Space.World*/);
+             Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
+
+
+
+            transform.position = temp;
+
+
+
+            //return;
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Debug.Log("DOWN");
+            transform.Translate(Vector3.down * movementSpeed * Time.deltaTime/*, Space.World*/);
+
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
+
+
+
+            transform.position = temp;
+
+
+            //return;
+        }
+
+        if (Input.GetKey(KeyCode.D))//right
+        {
+            //  Debug.Log("Right");
+
+            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
+
+            // transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+           // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
+
+
+
+            transform.position = temp;
+          //  return;
+        }
+
+        if (Input.GetKey(KeyCode.A))//left
+        {
+            // Debug.Log("Left");
+
+            transform.Translate(-Vector3.right * movementSpeed * Time.deltaTime);
+
+           // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
+
+
+            transform.position = temp;
+          //  return;
+        }
+
+        if (Input.GetKey(KeyCode.W))//forward
+        {
+            // Debug.Log("forward");
+
+            transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+
+            // transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            //Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
+
+
+
+            transform.position = temp;
+          //  return;
+        }
+
+        if (Input.GetKey(KeyCode.S))//back
+        {
+            // Debug.Log("back");
+
+            transform.Translate(-Vector3.forward * movementSpeed * Time.deltaTime);
+
+            //transform.position = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            // Vector3 temp = new Vector3(transform.position.x, CameraHeight, transform.position.z);
+            Vector3 temp = new Vector3(Mathf.Clamp(transform.position.x, MIN_X, MAX_X), Mathf.Clamp(transform.position.y, MIN_Y, MAX_Y), Mathf.Clamp(transform.position.z, MIN_Z, MAX_Z));
+
+
+
+            transform.position = temp;
+           // return;
+        }
+
     }
 
 }

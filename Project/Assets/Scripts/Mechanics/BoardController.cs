@@ -12,7 +12,7 @@ public class BoardController : MonoBehaviour
     public List<GameObject> PossibleBuildingOpenSpots; // do at soem point
     public GameObject[] BoardSpaces ;
 
-    private UIInteraction UIInteraction;
+    public UIInteraction UIInteraction;
 
     public bool DisplayAvail = false;
 
@@ -104,10 +104,6 @@ public class BoardController : MonoBehaviour
         {
             for (int j = 1; j < 6; j++)
             {
-
-                //bool Btemp = false;
-                // List<GameObject> LTemp;
-                //int count = 0;
 
                 if (i + 1 < 6)
                 {

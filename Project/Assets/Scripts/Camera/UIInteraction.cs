@@ -20,6 +20,9 @@ public class UIInteraction : MonoBehaviour {
     public GameObject DeleteBoxButton;
     public GameObject ConnSwapButton;
     public GameObject ConnButtons;
+    public GameObject sideOptions;
+
+    public GameObject connStatusGO;
     public Text ConnStatusText;
 
     public bool menuDisplayed = false, moveMenu = false;
@@ -81,7 +84,8 @@ public class UIInteraction : MonoBehaviour {
 
                 ConnButtons.GetComponent<ConnButtonController>().Active = true;
                 ConnButtons.GetComponent<ConnButtonController>().ConnTarget = boxSideFocused.transform.parent.transform.gameObject; //is giving conntop/ chagne to give connector itself
-                if(ConnButtons.GetComponent<ConnButtonController>().ButtonsActive == false)
+
+                if (ConnButtons.GetComponent<ConnButtonController>().ButtonsActive == false)
                 {
                     ConnButtons.GetComponent<ConnButtonController>().ActivateButtons();
                     ConnButtons.GetComponent<ConnButtonController>().ButtonsActive = true;
@@ -96,11 +100,21 @@ public class UIInteraction : MonoBehaviour {
 
                 // ConnButtons.GetComponent<ConnButtonController>().ConnTarget = null; //is giving conntop/ chagne to give connector itself
             }
-
+            if (boxSideFocused.transform.parent.parent.tag == "MainBox")
+            {
+                print("set true");
+                sideOptions.SetActive(true);
+            }
+            else
+            {
+                sideOptions.SetActive(false);
+            }
+                
+            
         }
         else
         {
-
+            sideOptions.SetActive(false);
             ConnButtons.GetComponent<ConnButtonController>().Active = false;
 
             if (ConnButtons.GetComponent<ConnButtonController>().ButtonsActive == true)
@@ -109,7 +123,7 @@ public class UIInteraction : MonoBehaviour {
                 ConnButtons.GetComponent<ConnButtonController>().ButtonsActive = false;
             }
         }
-
+       
 
         //if looking at box then show box delete
         //if looking at side then show side delete
@@ -118,21 +132,27 @@ public class UIInteraction : MonoBehaviour {
         {
             DeleteSideButton.SetActive(true);
             //  Debug.Log(side.gameObject.name);
-
+           
             if (boxSideFocused.GetComponent<BoxSideController>().side == "Connector")
             {
-                ConnSwapButton.SetActive(true);
-                ConnStatusText.gameObject.SetActive(true);
+                if (boxSideFocused.transform.parent.parent.tag != "BoxReciever") {
+                    ConnSwapButton.SetActive(true);
 
+                }
+                // ConnSwapButton.SetActive(true);
+                connStatusGO.SetActive(true);
+                sideOptions.SetActive(false);
             }
             else
             {
+               
                 ConnSwapButton.SetActive(false);
-                ConnStatusText.gameObject.SetActive(false);
+                connStatusGO.SetActive(false);
             }
         }
         else
         {
+           
             ConnSwapButton.SetActive(false);
             DeleteSideButton.SetActive(false);
         }
@@ -164,7 +184,7 @@ public class UIInteraction : MonoBehaviour {
             }
 
         }
-        else { ConnStatusText.gameObject.SetActive(false); }
+        else { connStatusGO.SetActive(false); }
 
         if (boxSideFocused != null && side == null)
         {
@@ -176,9 +196,7 @@ public class UIInteraction : MonoBehaviour {
             DeleteBoxButton.SetActive(false);
 
         }
-
-
-
+       
     }
     public void DisableSideButtons()
     {
@@ -468,8 +486,16 @@ public class UIInteraction : MonoBehaviour {
 
             }
         
+        if(boxSideFocused.transform.parent.parent.tag == "BoxReciever")
+        {
 
-        boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
+        }
+        else
+        {
+            boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
+        }
+
+     //   boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
     }
     public void DeleteSide()
     {

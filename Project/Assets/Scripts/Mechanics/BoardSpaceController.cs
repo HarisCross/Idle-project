@@ -20,11 +20,30 @@ public class BoardSpaceController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+        AllocateNumbers();
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    private void AllocateNumbers()
+    {
+
+        string name = gameObject.name;
+
+        char xChar = name[0];
+        char yChar = name[1];
+
+        // x = int.Parse(name[]);
+
+        x = (int)char.GetNumericValue(xChar);
+        y = (int)char.GetNumericValue(yChar);
+
+
+    }
 }

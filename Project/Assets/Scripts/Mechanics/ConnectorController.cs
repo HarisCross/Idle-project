@@ -74,7 +74,7 @@ public class ConnectorController : MonoBehaviour {
 
 
                 moneySplit = Mathf.Round((transferRate / count));
-
+               // Debug.Log("money split: " + moneySplit);
 
                 if (box.GetComponent<BoxController>() != null)
                 {
@@ -106,7 +106,7 @@ public class ConnectorController : MonoBehaviour {
                 //  Debug.Log("TRansfered money");
 
 
-                IncomeHeld -= transferRate;
+                IncomeHeld -= moneySplit;
             }
             else
             {
@@ -200,7 +200,7 @@ public class ConnectorController : MonoBehaviour {
     private bool CanTransfer(GameObject box)
     {
         bool ret = false;
-        Debug.Log(box.name);
+       // Debug.Log(box.name);
 
 
         if (box.GetComponent<BoxController>() != null)
@@ -250,7 +250,7 @@ public class ConnectorController : MonoBehaviour {
 
         if (box.GetComponent<RecieverController>() != null)
         {
-            Debug.Log("transferred to rec");
+         //   Debug.Log("attempt to transfer to rec: " + box.GetComponent<RecieverController>().BoxesToImport.Count + "if 0 then boo boo occured, commence tears.exe");
 
 
             foreach (GameObject pot in box.GetComponent<RecieverController>().BoxesToImport)
@@ -258,13 +258,13 @@ public class ConnectorController : MonoBehaviour {
                 Debug.Log(pot.name + this.name);
                 if (pot.gameObject == this.gameObject)
                 {
-                    Debug.Log("can trasnfer: pass");
+                   // Debug.Log("can trasnfer: pass");
                     ret = true;
 
                 }
                 else
                 {
-                    Debug.Log("can trasnfer: fail: " + pot.gameObject + " : " + this.gameObject);
+                  //  Debug.Log("can trasnfer: fail: " + pot.gameObject + " : " + this.gameObject);
                     ret = false;
                 }
 
@@ -283,7 +283,7 @@ public class ConnectorController : MonoBehaviour {
         BoxesToExport.Clear();
         BoxesToImport.Clear();
 
-        Debug.Log("update conn obj " + this.name);
+       // Debug.Log("update conn obj " + this.name);
 
         //use bsc - connector, 2 or 1, tile. update whenever it changes
         //  Debug.Log("export count: " + ExportSides.Count);
@@ -372,7 +372,7 @@ public class ConnectorController : MonoBehaviour {
 
         }
 
-          Debug.Log(" closest is: " + closest.name);
+      //    Debug.Log(" closest is: " + closest.name);
         if (AddTile)
         {
           //  Debug.Log("added: " + closest.name);
