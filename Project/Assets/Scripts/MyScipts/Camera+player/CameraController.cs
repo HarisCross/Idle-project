@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class CameraController : MonoBehaviour {
 
     private int screenWidth, screenHeight,movementSpeed = 5;
@@ -111,52 +111,58 @@ public class CameraController : MonoBehaviour {
     }
     private void InputChecks()
     {
-        if (moving == false)
-        {
-            if (Input.GetMouseButton(1) && CameraLocked == true && paused == false)
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        
+
+            //print("over go");
+
+            if (moving == false)
             {
-
-                //targetPos = transform;
-                MoveBack();
-                uiInteraction.DisableSideButtons();
-
-            }
-
-
-            if (Input.GetKey("escape"))
-            {
-                Application.Quit();
-            }
-
-            if (Input.GetMouseButton(0))
-            {
-                ClickOnObject();
-
-
-                if (CameraLocked == false)
+                if (Input.GetMouseButton(1) && CameraLocked == true && paused == false)
                 {
-                    MoveCamera();
+
+                    //targetPos = transform;
+                    MoveBack();
+                    uiInteraction.DisableSideButtons();
+
                 }
-            }
-            else if (Input.GetMouseButton(1) & CameraLocked == false)
-            {
-                RotateCamera();
-                Cursor.lockState = CursorLockMode.Locked;
-               // Cursor.lockState = CursorLockMode.Confined;
+
+
+                if (Input.GetKey("escape"))
+                {
+                    Application.Quit();
+                }
+
+                if (Input.GetMouseButton(0))
+                {
+                    ClickOnObject();
+
+
+                    if (CameraLocked == false)
+                    {
+                        MoveCamera();
+                    }
+                }
+                else if (Input.GetMouseButton(1) & CameraLocked == false)
+                {
+                    RotateCamera();
+                    Cursor.lockState = CursorLockMode.Locked;
+                    // Cursor.lockState = CursorLockMode.Confined;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                }
+
+
+
+                //Cursor.lockState = CursorLockMode.Confined;
             }
             else
             {
-                Cursor.lockState = CursorLockMode.None;
+
             }
-
-
-           
-            //Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            
-        }
+        
     }
     public void ConnectorTopFocused(GameObject Connector)
     {

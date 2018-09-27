@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIInteraction : MonoBehaviour {
@@ -248,8 +249,8 @@ public class UIInteraction : MonoBehaviour {
                                 tempGO = Instantiate(Resources.Load("TempBox", typeof(GameObject))) as GameObject;
                                 tempGO.transform.position = hit.transform.GetChild(1).gameObject.transform.position;
                             }
-
-                            if (Input.GetMouseButtonDown(0))
+                            if (EventSystem.current.IsPointerOverGameObject()) return;
+                                if (Input.GetMouseButtonDown(0))
                             {
 
                                 SpawnBox(hit);
@@ -284,6 +285,7 @@ public class UIInteraction : MonoBehaviour {
                                 tempGO = Instantiate(Resources.Load("TempConn", typeof(GameObject))) as GameObject;
                                 tempGO.transform.position = hit.transform.GetChild(1).gameObject.transform.position;
                             }
+                            if (EventSystem.current.IsPointerOverGameObject()) return;
 
                             if (Input.GetMouseButtonDown(0))
                             {

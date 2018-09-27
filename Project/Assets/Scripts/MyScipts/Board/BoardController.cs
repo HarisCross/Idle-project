@@ -90,7 +90,11 @@ public class BoardController : MonoBehaviour
             {
                 if(spot.GetComponent<BoardSpaceController>().TakenByB == false)
                 {
-                    PossibleBuildingOpenSpots.Add(spot);
+                    if (spot.GetComponent<BorderSpaceTile>())
+                    {
+
+                        PossibleBuildingOpenSpots.Add(spot);
+                    }
                 }
 
             }
