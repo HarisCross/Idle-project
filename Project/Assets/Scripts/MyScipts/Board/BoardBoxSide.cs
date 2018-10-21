@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BoardBoxSide : MonoBehaviour {
-
+public class BoardBoxSide : MonoBehaviour
+{
     public int boardBoxSide;
     /// <summary>
     /// 0 = base
@@ -14,13 +12,13 @@ public class BoardBoxSide : MonoBehaviour {
     /// 4 = backwards in x axis
     /// </summary>
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    private void Start()
+    {
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
 }

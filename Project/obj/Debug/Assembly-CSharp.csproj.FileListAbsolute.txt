@@ -167,6 +167,7 @@ G:\Project\Project\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 G:\Project\Project\obj\Debug\Assembly-CSharp.dll
 G:\Project\Project\obj\Debug\Assembly-CSharp.pdb
 G:\Project\Project\Temp\bin\Debug\Facebook.Unity.Settings.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.dll
@@ -331,8 +332,7 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.HoloLens.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
-C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
-C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WebGLModule.dll

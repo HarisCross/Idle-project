@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using UnityEditor;
-using System.Collections;
+using UnityEngine;
 
 public class CountLines : EditorWindow
 {
-    System.Text.StringBuilder strStats;
-    Vector2 scrollPosition = new Vector2(0, 0);
-    struct File
+    private System.Text.StringBuilder strStats;
+    private Vector2 scrollPosition = new Vector2(0, 0);
+
+    private struct File
     {
         public string name;
         public int nbLines;
@@ -18,7 +19,7 @@ public class CountLines : EditorWindow
         }
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
         if (GUILayout.Button("Refresh"))
         {
@@ -29,7 +30,6 @@ public class CountLines : EditorWindow
         EditorGUILayout.EndScrollView();
     }
 
-
     [MenuItem("Custom/Stats/Count Lines")]
     public static void Init()
     {
@@ -39,7 +39,7 @@ public class CountLines : EditorWindow
         window.DoCountLines();
     }
 
-    void DoCountLines()
+    private void DoCountLines()
     {
         string strDir = System.IO.Directory.GetCurrentDirectory();
         strDir += @"/Assets";
@@ -64,7 +64,7 @@ public class CountLines : EditorWindow
         }
     }
 
-    static void ProcessDirectory(ArrayList stats, string dir)
+    private static void ProcessDirectory(ArrayList stats, string dir)
     {
         string[] strArrFiles = System.IO.Directory.GetFiles(dir, "*.cs");
         foreach (string strFileName in strArrFiles)
@@ -79,7 +79,7 @@ public class CountLines : EditorWindow
             ProcessDirectory(stats, strSubDir);
     }
 
-    static void ProcessFile(ArrayList stats, string filename)
+    private static void ProcessFile(ArrayList stats, string filename)
     {
         System.IO.StreamReader reader = System.IO.File.OpenText(filename);
         int iLineCount = 0;

@@ -1,3 +1,4 @@
+C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp-Editor.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp-Editor.pdb
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.dll
@@ -200,8 +201,9 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.VR.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
-C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.csproj.CopyComplete
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.pdb
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.WebGL.Extensions.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WebGLModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp.pdb

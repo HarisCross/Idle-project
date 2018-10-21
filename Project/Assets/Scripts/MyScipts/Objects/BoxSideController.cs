@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BoxSideController : MonoBehaviour {
-
+public class BoxSideController : MonoBehaviour
+{
     public BoxController MainBox;
     public float rotateAmount;
     public bool boxSidePresent = false;
@@ -21,28 +19,24 @@ public class BoxSideController : MonoBehaviour {
 
     public int SideNumber;
 
-
     // Use this for initialization
-    void Start () {
-
-
-
+    private void Start()
+    {
     }
 
     public void Timedpdate()
     {
         IncomeHeld += IncomeRate;
-       // Debug.Log("box side timed");
+        // Debug.Log("box side timed");
 
         //add to main box
         //take from incomeheld
-        if(IncomeHeld > transferRate)
+        if (IncomeHeld > transferRate)
         {
             //if held is more than transfer rate
 
             MainBox.AddIncome(transferRate);
             IncomeHeld -= transferRate;
-
         }
         else
         {
@@ -52,14 +46,14 @@ public class BoxSideController : MonoBehaviour {
             IncomeHeld -= IncomeHeld;
         }
     }
-  
+
     // Update is called once per frame
-    void Update () {
+    private void Update()
+    {
         if (Rec == false)
         {
             if (MainBox == null)
             {
-
                 Collider[] col = Physics.OverlapSphere(this.transform.position, 1f);
                 int i = 0;
                 while (i < col.Length)
@@ -68,12 +62,17 @@ public class BoxSideController : MonoBehaviour {
                     {
                         MainBox = col[i].transform.gameObject.GetComponent<BoxController>();
                         MainBox.boxSides.Add(this.transform.gameObject);
-
                     }
                 }
-                
             }
+            else
+            {
+                //Vector3 dir = this.transform.position - MainBox.transform.position;
 
+                //// Debug.DrawLine(this.transform.position, MainBox.transform.position);
+                //Debug.DrawRay(this.transform.position, dir);
+                ////Debug.DrawLine(this.transform.position, GameObject.Find("Player").transform.position);
+            }
 
             if (side == "Connector" & inpExpSide == null)
             {
@@ -81,25 +80,21 @@ public class BoxSideController : MonoBehaviour {
                 MainBox.UpdateConnObj();
             }
 
-
-
             TEMPSideConnectorCol();
 
             if (IncomeHeld > MaxLimit)
             {
                 IncomeHeld = MaxLimit;
             }
-
         }
     }
-    void TEMPSideConnectorCol()
+
+    private void TEMPSideConnectorCol()
     {
         if (connectorStatus != 0)
         {
-
             if (transform.childCount < 2) return;
             Material mat = transform.GetChild(2).transform.GetChild(0).transform.GetComponent<MeshRenderer>().material;
-
 
             switch (connectorStatus)
             {
@@ -107,15 +102,13 @@ public class BoxSideController : MonoBehaviour {
 
                     mat.color = Color.red;
 
-
                     break;
+
                 case 2:
                     mat.color = Color.blue;
 
-
                     break;
             }
-
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TempBoxGO : MonoBehaviour {
-
-   // private GameObject displayBoxOptions;
+public class TempBoxGO : MonoBehaviour
+{
+    // private GameObject displayBoxOptions;
 
     private void Awake()
     {
@@ -16,14 +14,15 @@ public class TempBoxGO : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
+
     //private void OnDestroy()
     //{
     //    //displayBoxOptions.gameObject.transform.GetChild(0).gameObject.SetActive(false);

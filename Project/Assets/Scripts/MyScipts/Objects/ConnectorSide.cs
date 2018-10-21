@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ConnectorSide : MonoBehaviour {
-
+public class ConnectorSide : MonoBehaviour
+{
     public string side = "Connector";
+
     [SerializeField]
     private ConnectorController CConn;
+
     private GameObject MainController;
     private PlayerController playerCon;
     public GameObject buttonAssigned;
@@ -19,37 +19,41 @@ public class ConnectorSide : MonoBehaviour {
     public int connectorStatus = 1;//0 for not, 1 for exp, 2 for inp
     public GameObject inpExpSide;
 
- //   [SerializeField]
+    //   [SerializeField]
     public int upgradeLevel = 0;
 
     //box side values//
     public float PurchaseCost = 50f;
+
     public float UpgradeCost = 150f;
- //   public float IncomeHeld = 0;
-  //  public float IncomeRate = 0f;
-     public float transferRate = 0f;
-  //  public float MaxLimit = 0f;
+
+    //   public float IncomeHeld = 0;
+    //  public float IncomeRate = 0f;
+    public float transferRate = 0f;
+
+    //  public float MaxLimit = 0f;
 
     //box side values//
 
     // Use this for initialization
-    void Start () {
+    private void Start()
+    {
         //    Debug.Log(transform.parent.gameObject.transform.parent.gameObject.name);
         MainController = transform.parent.gameObject.transform.parent.gameObject;
         CConn = MainController.GetComponent<ConnectorController>();
         thisSide = transform.GetChild(0).gameObject;
         playerCon = GameObject.Find("Player").GetComponent<PlayerController>();
-
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    private void Update()
+    {
         UpdateText();
 
         if (inpExpSide == null && upgradeLevel != 0)
         {
-          // Debug.Log(this.gameObject.name + this.transform.ToString() + "sent to cc trnas");
-         //  Debug.Log(this.transform.GetChild(0).GetChild(1).transform.name + this.transform.GetChild(0).GetChild(1).transform.transform.ToString() + "sent to cc trnas");
+            // Debug.Log(this.gameObject.name + this.transform.ToString() + "sent to cc trnas");
+            //  Debug.Log(this.transform.GetChild(0).GetChild(1).transform.name + this.transform.GetChild(0).GetChild(1).transform.transform.ToString() + "sent to cc trnas");
             //inpExpSide = CConn.GetNearObjects(this.gameObject.transform, true);
 
             //since dist check is activated when this will be called then it can be used to get the inpexptile
@@ -58,10 +62,9 @@ public class ConnectorSide : MonoBehaviour {
             CConn.UpdateConnObj();
             CConn.UpdateInpExpLists();
         }
-
     }
 
-    void UpdateText()
+    private void UpdateText()
     {
         //updates buttons text using button held above
         if (buttonAssigned != null)
@@ -75,40 +78,33 @@ public class ConnectorSide : MonoBehaviour {
                 buttonAssigned.transform.GetChild(0).GetComponent<Text>().text = upgradeLevel.ToString();
             }
         }
-       
-
-
     }
-    
-    void SideConnectorCol()
+
+    private void SideConnectorCol()
     {
-        
-            Material mat = transform.GetChild(0).GetChild(0).transform.GetComponent<MeshRenderer>().material;
-            switch (connectorStatus)
-            {
-                case 1:
+        Material mat = transform.GetChild(0).GetChild(0).transform.GetComponent<MeshRenderer>().material;
+        switch (connectorStatus)
+        {
+            case 1:
 
-                    mat.color = Color.red;
+                mat.color = Color.red;
 
+                break;
 
-                    break;
-                case 2:
-                    mat.color = Color.blue;
+            case 2:
+                mat.color = Color.blue;
 
-
-                    break;
-            }
-
-        
+                break;
+        }
     }
+
     public void SwapConnType()
     {
         //Debug.Log("swapped connect int");
         switch (connectorStatus)
         {
-
-            case 1: connectorStatus = 2;break;
-            case 2: connectorStatus = 1;break;
+            case 1: connectorStatus = 2; break;
+            case 2: connectorStatus = 1; break;
         }
 
         // boxSideFocused.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateInpExpLists();
@@ -117,14 +113,15 @@ public class ConnectorSide : MonoBehaviour {
 
         SideConnectorCol();
     }
+
     public void ModifySide()
     {
         //allow: purchase, upgrade
 
-        if(sidePresent == false)
+        if (sidePresent == false)
         {
             //buy side - check money,check stats
-            if(playerCon.Money > PurchaseCost)
+            if (playerCon.Money > PurchaseCost)
             {
                 //can afford purchase
                 sidePresent = true;
@@ -140,9 +137,7 @@ public class ConnectorSide : MonoBehaviour {
                 //cant afford purchase
 
                 Debug.Log("cant afford purchase");
-
             }
-
         }
         else
         {
@@ -154,17 +149,20 @@ public class ConnectorSide : MonoBehaviour {
                 case 0:
                     Debug.Log("should not reach here : switch - 0");
                     break;
+
                 case 1:
                     uCost = UpgradeCost * upgradeLevel;
                     break;
+
                 case 2:
                     uCost = (UpgradeCost * upgradeLevel) + 25f;
                     break;
+
                 case 3:
                     uCost = (UpgradeCost * upgradeLevel) + 75f;
                     break;
-                default: Debug.Log("should not reach here : switch - default"); break;
 
+                default: Debug.Log("should not reach here : switch - default"); break;
             }
 
             if (playerCon.Money > uCost && upgradeLevel < 3)
@@ -175,8 +173,7 @@ public class ConnectorSide : MonoBehaviour {
                 playerCon.Money -= uCost;
                 upgradeLevel++;
 
-                if(CConn.transferRate < (25 * upgradeLevel)) CConn.transferRate = (25 * upgradeLevel);
-
+                if (CConn.transferRate < (25 * upgradeLevel)) CConn.transferRate = (25 * upgradeLevel);
 
                 // UpdateRate();
             }
@@ -184,11 +181,7 @@ public class ConnectorSide : MonoBehaviour {
             {
                 //cant afford purchase or cant upgrade further
                 Debug.Log("cant afford upgrade" + uCost);
-
             }
-
         }
-
-
     }
 }
