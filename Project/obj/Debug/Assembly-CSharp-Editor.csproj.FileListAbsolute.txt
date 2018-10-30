@@ -17,7 +17,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.Analytics.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.Android.Extensions.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.Facebook.Extensions.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.GoogleAudioSpatializer.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.Graphs.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.HoloLens.dll
@@ -32,10 +31,8 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.Timeline.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.TreeEditor.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.UI.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.UIAutomation.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.VR.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.WindowsStandalone.Extensions.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.WSA.Extensions.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.AccessibilityModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.AIModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.Analytics.dll
@@ -68,7 +65,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.PerformanceReportingModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.Physics2DModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.PhysicsModule.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.Purchasing.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.ScreenCaptureModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.SharedInternalsModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.SpatialTracking.dll
@@ -87,7 +83,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.TimelineModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.TLSModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UI.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UIAutomation.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UIElementsModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UIModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UmbraModule.dll
@@ -102,7 +97,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.VehiclesModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.VideoModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.VRModule.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WebModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WindModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.XRModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityScript.dll
@@ -114,14 +108,11 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\ExCSS.Unity.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.Parser.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.Compiler.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.UNetWeaver.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.IvyParser.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.Cecil.Mdb.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\SyntaxTree.VisualStudio.Unity.Messaging.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Boo.Lang.Useful.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.CecilTools.dll
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.Cecil.Pdb.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.AIModule.xml
@@ -178,7 +169,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.VRModule.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.VehiclesModule.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.VideoModule.xml
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WebModule.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WindModule.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.XRModule.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UI.xml
@@ -191,8 +181,6 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\nunit.framew
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.Timeline.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.Timeline.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.TreeEditor.xml
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.UIAutomation.xml
-C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.UIAutomation.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.GoogleAudioSpatializer.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.HoloLens.xml
@@ -206,4 +194,16 @@ C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-E
 C:\Users\haris\Documents\GitHub\Idle-project\Project\obj\Debug\Assembly-CSharp-Editor.pdb
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.WebGL.Extensions.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.WebGLModule.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Unity.TextMeshPro.Editor.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.LinuxStandalone.Extensions.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEditor.OSXStandalone.Extensions.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.LocalizationModule.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.ProfilerModule.dll
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.StreamingModule.dll
 C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.xml
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.LocalizationModule.xml
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.ProfilerModule.xml
+C:\Users\haris\Documents\GitHub\Idle-project\Project\Temp\bin\Debug\UnityEngine.StreamingModule.xml

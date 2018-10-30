@@ -70,7 +70,7 @@ public class BoardController : MonoBehaviour
         DisplayAvail = false;
         UIInt.PurchasingTiles = false;
 
-        print("closing display");
+      //  print("closing display");
         foreach (GameObject space in BoardSpaces)
         {
             space.gameObject.transform.GetChild(0).gameObject.SetActive(false);

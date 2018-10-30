@@ -259,6 +259,7 @@ public class CameraController : MonoBehaviour
 
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 50))
         {
+
             if (hit.transform.tag == "BoxSide" | hit.transform.tag == "ConnTop")
             {
                 if (CameraLocked == false)

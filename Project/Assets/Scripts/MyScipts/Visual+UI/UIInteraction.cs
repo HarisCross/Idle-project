@@ -7,20 +7,14 @@ public class UIInteraction : MonoBehaviour
 {
     //public GameObject UIBoxSide,UI;
 
-    private PlayerController player;
-    private BoardController boardController;
-    private TimeController timeController;
-    private CameraController camController;
-    public AudioManager audioManager;
 
     public GameObject Menu; private bool menuEnabled = true;
-    public GameObject menuButton; private bool menuButtonEnabled;
 
-    public GameObject ButtonsHolder;
-    public GameObject DeleteSideButton;
-    public GameObject DeleteBoxButton;
-    public GameObject ConnSwapButton;
-    public GameObject ConnButtons;
+
+
+    [SerializeField]
+    public bool PurchasingTiles = false;
+
     public GameObject sideOptions;
 
     public GameObject connStatusGO;
@@ -41,12 +35,32 @@ public class UIInteraction : MonoBehaviour
 
     private RaycastHit hit;
 
+    [Header("Items Focused")]
     public GameObject boxSideFocused;//the numbered side with controller
     public GameObject side;//side object spawned in
     private GameObject sideLoc;
 
-    [SerializeField]
-    public bool PurchasingTiles = false;
+
+
+    [Header("Buttons")]
+    public GameObject ButtonsHolder;
+    public GameObject DeleteSideButton;
+    public GameObject DeleteBoxButton;
+    public GameObject DeleteGenButton;
+    public GameObject ConnSwapButton;
+    public GameObject ConnButtons;
+    public GameObject menuButton; private bool menuButtonEnabled;
+    public GameObject GenUpgradeButton;
+
+
+    [Header("Script References")]
+    public AudioManager audioManager;
+    private PlayerController player;
+    private BoardController boardController;
+    private TimeController timeController;
+    private CameraController camController;
+
+
 
     private void Start()
     {
@@ -72,7 +86,7 @@ public class UIInteraction : MonoBehaviour
         }
     }
 
-    private void ButtonUpdate()
+    private void ButtonUpdate()//messy as fuck function which totaly needs to be rebuilt but would require a UI overhaul to be worth it so spaghetti code is spaghetti for the moment
     {
         if (boxSideFocused != null)
         {
@@ -177,11 +191,40 @@ public class UIInteraction : MonoBehaviour
 
         if (boxSideFocused != null && side == null)
         {
-            DeleteBoxButton.SetActive(true);
+            if (boxSideFocused.GetComponent<GeneratorSide>())
+            {
+                //is gen
+                DeleteGenButton.SetActive(true);
+
+                if (boxSideFocused.transform.parent.parent.GetComponent<GeneratorController>())//if its false then activate button else not to avoid redundency
+                {
+                    if(boxSideFocused.transform.parent.parent.GetComponent<GeneratorController>().AutoFeedTransfer == false)
+                    {
+                        GenUpgradeButton.SetActive(true);
+                    }
+                    else
+                    {
+                        GenUpgradeButton.SetActive(false);
+                    }
+                   
+                }
+               
+            }
+            else
+            {
+                //isnt gen
+                DeleteBoxButton.SetActive(true);
+
+            }
+
+            
+           // 
         }
         else
         {
             DeleteBoxButton.SetActive(false);
+            DeleteGenButton.SetActive(false);
+            GenUpgradeButton.SetActive(false);
         }
     }
 
@@ -219,6 +262,16 @@ public class UIInteraction : MonoBehaviour
                 if (hit.transform.tag != "BoardSpace") return;
                 AttemptToBuyTile(hit.transform.gameObject);
                 return;
+            }
+            if (hit.transform.gameObject.GetComponent<GeneratorSide>())
+            {
+                //print("is gen side");
+
+
+
+
+
+
             }
             if (hit.transform.gameObject.tag == "BoardSpace")
             {
@@ -695,7 +748,31 @@ public class UIInteraction : MonoBehaviour
         camController.MoveBack();
         //sideLoc.GetComponent<BoxSideController>().MainBox.GetComponent<BoxController>().UpdateLists();
     }
+    public void DeleteGen()
+    {
+        GameObject box = boxSideFocused.transform.parent.parent.transform.gameObject;
 
+        timeController.UpdateRemoveList(box);
+
+        if (box.GetComponent<BoxController>())
+        {
+            box.GetComponent<BoxController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        }
+        if (box.GetComponent<ConnectorController>())
+        {
+            //  print(box.name);
+            box.GetComponent<ConnectorController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        }
+        if (box.GetComponent<GeneratorController>())
+        {
+            //  print(box.name);
+            box.GetComponent<GeneratorController>().SpaceTaken.GetComponent<BoardSpaceController>().TakenByB = false;
+        }
+        Destroy(box);
+
+        boardController.UpdatePossBOSList();
+        camController.MoveBack();
+    }
     private void SpawnSideMain(string chosenSide, int SideNumber)
     {
         //get side chosen
@@ -858,4 +935,15 @@ public class UIInteraction : MonoBehaviour
         // Screen.fullScreenMode = !Screen.fullScreen;
         // print("screen is: " +Screen.fullScreen);
     }
+
+    public void GeneratorTransferUpgrade()
+    {
+        // .p 2
+        //  gen.GetComponent<GeneratorController>().AutoFeedTransfer = true;
+
+
+
+        boxSideFocused.transform.parent.parent.GetComponent<GeneratorController>().AutoFeedTransfer = true;
+    }
+
 }

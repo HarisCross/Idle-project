@@ -76,7 +76,7 @@ public class TimeController : MonoBehaviour
         }
         if (RemoveObject.GetComponent<GeneratorController>() != null)
         {
-            RemoveObject.GetComponent<ConnectorController>().SpaceTaken.GetComponent<BoardSpaceController>().CurrentBox = null;
+            RemoveObject.GetComponent<GeneratorController>().SpaceTaken.GetComponent<BoardSpaceController>().CurrentBox = null;
             GeneratorList.Remove(RemoveObject);
         }
         UpdateBoxExports();

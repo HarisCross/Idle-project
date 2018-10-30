@@ -19,6 +19,7 @@ public class GeneratorController : MonoBehaviour
     //box values//
     [SerializeField]
     public bool AutoFeedConversion = true;
+    public bool AutoFeedTransfer = false;
 
     public float IncomeHeld = 0f;
     public float FeedHeld = 0f;
