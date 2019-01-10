@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Assests\Visual\Simple UI\Samples\IconPreview.cs" />
-    <Compile Include="Assets\GenButton.cs" />
     <Compile Include="Assets\Scripts\AssestUser.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Board\BoardBoxSide.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets\Scripts\MyScipts\Objects\Class1.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Objects\ConnectorController.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Objects\ConnectorSide.cs" />
+    <Compile Include="Assets\Scripts\MyScipts\Objects\GenButton.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Objects\GeneratorController.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Objects\GeneratorSide.cs" />
     <Compile Include="Assets\Scripts\MyScipts\Objects\RecieverController.cs" />
